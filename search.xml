@@ -4917,12 +4917,6 @@ $ Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
     </entry>
     
     <entry>
-      <title><![CDATA[分类]]></title>
-      <url>/categories/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Neko 是什么？]]></title>
       <url>/about/index.html</url>
       <content type="html"><![CDATA[<p>是一只名叫 Ayaka Neko 的猫，<br>生活在一个自己看上去似乎无望的世界上，<br>尝试并且努力尝试寻找着属于自己的归属之地、归宿的猫。</p>
@@ -4943,6 +4937,12 @@ $ Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
     </entry>
     
     <entry>
+      <title><![CDATA[分类]]></title>
+      <url>/categories/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[各个分类]]></title>
       <url>/category/index.html</url>
       <content type="html"></content>
@@ -4951,12 +4951,6 @@ $ Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
     <entry>
       <title><![CDATA[留言板]]></title>
       <url>/comments/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[所有标签]]></title>
-      <url>/tags/index.html</url>
       <content type="html"></content>
     </entry>
     
@@ -4972,6 +4966,12 @@ $ Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
       <content type="html"><![CDATA[<html prefix="og: http://ogp.me/ns#"><br>  <head><br>    <title>OGP TEST - CloudMusic</title><br>    <meta property="og:title" content="That Alone Feeling" /><br>    <meta property="og:type" content="music.album" /><br>    <meta property="og:url" content="http://music.163.com/album/?id=36849038" /><br>    <meta property="og:image" content="http://p3.music.126.net/xFssArg1pX2jy16nICd44w==/109951163068691120.jpg?param=500y500" /><br>    <meta property="og:description"
       content="网易云音乐 - That Alone Feeling by Xeuphoria" /><br>  <meta name="generator" content="Hexo 4.2.1"></head><br></html>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[所有标签]]></title>
+      <url>/tags/index.html</url>
+      <content type="html"></content>
     </entry>
     
   
