@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Arweave 储存网站 | 喵 | 欢迎光临喵~</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#EC4E6F">
+    
+    
+    <meta name="keywords" content="Vue,Webpack,区块链,P2P,区块纺,Arweave">
+    <meta name="description" content="前言初识 Arweave 是在看到这样的一条新闻：隐私社交工具 Maskbook 集成 Arweave 支持永久储存文件                                                                                                           然后岛娘就问猫猫去做一下研究，看看能不能把 Matataki 的东">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Arweave 储存网站">
+<meta property="og:url" content="https://neko.ayaka.moe/2020/08/31/044/index.html">
+<meta property="og:site_name" content="喵">
+<meta property="og:description" content="前言初识 Arweave 是在看到这样的一条新闻：隐私社交工具 Maskbook 集成 Arweave 支持永久储存文件                                                                                                           然后岛娘就问猫猫去做一下研究，看看能不能把 Matataki 的东">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/08/31/OCEQIqVtfN39npG.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/31/kUL1NxdHWl76Vmr.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/31/xUIg8n6LYaWDtmh.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/31/Jn9CSfgWIMUhDpu.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/31/hrGdEzvaXL189Kn.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/31/nLyItOm1NZjMrpe.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/31/WLUfxFydgrZevtH.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/31/y1SK6asYUnqViPo.png">
+<meta property="article:published_time" content="2020-08-31T14:44:03.000Z">
+<meta property="article:modified_time" content="2020-08-31T14:44:03.000Z">
+<meta property="article:author" content="Ayaka Neko">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="Webpack">
+<meta property="article:tag" content="区块链">
+<meta property="article:tag" content="P2P">
+<meta property="article:tag" content="区块纺">
+<meta property="article:tag" content="Arweave">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/08/31/OCEQIqVtfN39npG.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="喵" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.jpg">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.png)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Ayaka Neko</h5>
+          <a href="mailto:neko@ayaka.moe" title="neko@ayaka.moe" class="mail">neko@ayaka.moe</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                好多标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                各个分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-heart"></i>
+                关于猫猫
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="mailto:neko@ayaka.moe"  >
+                <i class="icon icon-lg icon-envelope-open"></i>
+                Email 地址
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/nekomeowww" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/ayakaneko" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/id/ayakaneko" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Arweave 储存网站</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Arweave 储存网站</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-08-31T14:44:03.000Z" itemprop="datePublished" class="page-time">
+  2020-08-31
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Guide/">Guide</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#研究"><span class="post-toc-number">2.</span> <span class="post-toc-text">研究</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#部署一个纯粹的-HTML-文件"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">部署一个纯粹的 HTML 文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第二天的研究"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">第二天的研究</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#搬迁原有的东西"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">搬迁原有的东西</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#构建一些新的东西"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">构建一些新的东西</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#部署失败了"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">部署失败了</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第三天的挣扎"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">第三天的挣扎</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#发现原因"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">发现原因</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解决问题"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">解决问题</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#结论"><span class="post-toc-number">3.</span> <span class="post-toc-text">结论</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#最后"><span class="post-toc-number">4.</span> <span class="post-toc-text">最后</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#链接"><span class="post-toc-number">5.</span> <span class="post-toc-text">链接</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-044"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Arweave 储存网站</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-08-31 22:44:03" datetime="2020-08-31T14:44:03.000Z"  itemprop="datePublished">2020-08-31</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Guide/">Guide</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            <br>
+            <br>
+            共有字数 3.1k 字 | 阅读时间 12 分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>初识 Arweave 是在看到这样的一条新闻：<a href="https://www.chainnews.com/news/107645751530.htm" target="_blank" rel="noopener">隐私社交工具 Maskbook 集成 Arweave 支持永久储存文件</a><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/31/OCEQIqVtfN39npG.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>然后岛娘就问猫猫去做一下研究，看看能不能把 Matataki 的东西存储到 Arweave 上。<br>起初我只是抱着一个很简单的心态来看待这个问题，我觉得肯定很简单。于是我前往了 Arweave 的官网，获取了我的第一笔 AR 钱包和金额，虽然只有少量的 0.25 AR，但是看了看官方的文档，部署起来肯定不会需要太多的花费的。</p>
+<a id="more"></a>
+<h1 id="研究"><a href="#研究" class="headerlink" title="研究"></a>研究</h1><p>去到了 GitHub，创建了一个名为 <a href="https://github.com/AyakaLab/ArcLight" target="_blank" rel="noopener">ArcLight</a> 的项目，专门用来存储相关的项目内容，这个项目最早定义是一个储存 App，你可以储存你的文件到 Arweave 中，永久可用。<br>起初用的是 <a href="https://github.com/ArweaveTeam/arweave-js" target="_blank" rel="noopener">Arweave.js</a>，这个是官方的 HTTP API 的 Node.js wrapper，里面集成了很多基本的方法和使用接口所需要的东西。<br>我想着这个项目应该是一个类似后端的程序，我就拍拍脑袋开始写 app.js，然后添加 Koa 作为后端框架支持开始工作。但是一开始我就发现这个 API 不简单，很多时候的操作要 verify 很多，也需要测试很多才行。<br>然后开始去浏览他们的 <a href="https://mtfvznw2pwxykoicvxpoe7ao5rp4nhaueueux2bbe4klxankdhra.arweave.net/ZMtcttp9r4U5Aq3e4nwO7F_GnBQlCUvoIScUu4GqGeI/" target="_blank" rel="noopener">dApp 列表</a><br>看了一会儿之后点击 Publish App 的时候需要选择 App 类型，看到那么多的类型的时候我才反应过来，原来 Arweave 能做这么多事情。这个 Arweave 有点类似曾经的 ZeroNet，也像 IPFS 能做的事情，但是 Arweave 能做的就是能用普通的浏览器访问这些<strong>以哈希值存储的内容</strong>，并且运行优美的 Web App。<br>第一天就想着，我试着部署一个网站上去算了。</p>
+<h2 id="部署一个纯粹的-HTML-文件"><a href="#部署一个纯粹的-HTML-文件" class="headerlink" title="部署一个纯粹的 HTML 文件"></a>部署一个纯粹的 HTML 文件</h2><p>最初我去 Codepen 上找了一个参考的背景 CSS 动画写法，然后在这个里面决定好我们的主题颜色：粉色，然后修改了一个标题和一些小动画出来制作出来了一个完全只有 HTML 和 CSS 构成的一个 <a href="https://github.com/AyakaLab/ArcLight/blob/b3154deaf10a764ade476c7d3e48e03aed428e9b/public/index.html" target="_blank" rel="noopener">index.html</a> 文件。<br>然后使用官方给的 <a href="https://github.com/ArweaveTeam/arweave-deploy" target="_blank" rel="noopener">Arweave Deploy</a> 命令行工具部署到了 Arweave 的去中心化网络上。<br>部署一个纯粹的 HTML 文件和 favicon 的文件夹看起来似乎如鱼得水，就按照官方的说明：</p>
+<pre><code>arweave deploy-dir ./public --key-file secrets/ayaka.key.json
+</code></pre><p>用这个命令就能完成存储在 public 文件夹下面整个文件夹的部署工作，这个过程看起来很简单很简洁，ayaka.key.json 就是你从网站上免费获取的下载的那个文件。<br>对于 <strong><em>Arweave 区块纺</em> 而言，你的用户 ID 和你的认证凭据就是那个 JSON 文件</strong>，请一定小心保管。<br>部署的最早的版本看上去很简陋，什么都没有，<a href="https://hsaiqhvqmphybnatuq7ticoxu6j4nm6p5apjuktlf5xvun2chl5a.arweave.net/PICIHrBjz4C0E6Q_NAnXp5PGs8_oHpoqay9vWjdCOvo" target="_blank" rel="noopener">地址</a></p>
+<h2 id="第二天的研究"><a href="#第二天的研究" class="headerlink" title="第二天的研究"></a>第二天的研究</h2><p>第二天我对 <a href="https://github.com/ArweaveTeam/arweave-js" target="_blank" rel="noopener">Arweave.js</a> 进行了很细致的研究，比如如何使用这个 Javascript 库完成文件上传和 对 Transactions 进行 sign 和 submit，然后就意识到我们需要的是一个独立的，去中心化，不需要后端的前端 App，这让我从那个 app.js 和 Koa 的梦中醒来，发现自己并不需要这样，我们只需要像往常一样构建一个普通的 Vue + Webpack 的网站就可以了，因为可以上传到 Arweave 的东西可以是一整个文件夹，只要我打包好就行。</p>
+<p>于是我开始着手改造整个 ArcLight 项目，去掉了 public 文件夹，保留了存储 key 的 secrets 文件夹，然后为 Vue + Webpack 初始化使用</p>
+<pre><code>vue init webpack .
+</code></pre><p>然后一个崭新的 Vue 项目就构建起来了。</p>
+<h3 id="搬迁原有的东西"><a href="#搬迁原有的东西" class="headerlink" title="搬迁原有的东西"></a>搬迁原有的东西</h3><p>像往常一样，我在 src/router/index.js 中写下 / 的地址对应的是 Landing 页面，也就是原本部署到网络的页面写到 <a href="https://github.com/AyakaLab/ArcLight/blob/57b3ee139e6388484704aa12b8feb18238532296/src/pages/Landing.vue" target="_blank" rel="noopener">Landing.vue</a> 这个文件下。<br>因为岛娘的有一部分需求是要能够存储 Podcast 或者是图片或者是 PDF 之类的文件，完成去中心化的文件存储，于是我准备了 Flower Dance 这首音乐来作为测试对象，又添加了 DIYGod 写的 Aplayer 作为我们的播放器，这样可以避免使用原生的 <audio> 标签导致不同浏览器不同音乐播放器的效果，导致我们看到的结果不统一。</p>
+<h3 id="构建一些新的东西"><a href="#构建一些新的东西" class="headerlink" title="构建一些新的东西"></a>构建一些新的东西</h3><p>因为有音乐播放器，有音乐，我们需要一个音乐目录和音乐菜单，还有播放音乐的页面。于是建立了 <a href="https://github.com/AyakaLab/ArcLight/blob/57b3ee139e6388484704aa12b8feb18238532296/src/pages/Music.vue" target="_blank" rel="noopener">Music.vue</a> 和 <a href="https://github.com/AyakaLab/ArcLight/blob/57b3ee139e6388484704aa12b8feb18238532296/src/pages/Music/_id.vue" target="_blank" rel="noopener">Music/_id.vue</a> 这两个文件。在这个时候，我们依然还没有一个具体的原型，为了构建的速度足够快，我选择让每一个页面的背景都是相同的，只有 title 也就是大标题不一致。比如 Music 选单里，标题就是 Music，播放页面的标题就是歌曲的 name 参数等等。</p>
+<p>我们需要给 Music 页面写一个音乐列表，</p>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;music-list&quot;&gt;
+    &lt;b-menu&gt;
+      &lt;b-menu-list v-for=&quot;(audio, index) in audioList&quot; :key=&quot;index&quot; label=&quot;Music List&quot;&gt;
+        &lt;b-menu-item :label=&quot;audio.name&quot; tag=&quot;router-link&quot; target=&quot;_blank&quot; :to=&quot;audio.path&quot;&gt;&lt;/b-menu-item&gt;
+      &lt;/b-menu-list&gt;
+    &lt;/b-menu&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data () {
+    return {
+      audioList: [
+        {
+          name: &#39;Flower Dance&#39;,
+          path: &#39;/music/flowerdance&#39;
+        }
+      ]
+    }
+  }
+}
+&lt;/script&gt;
+
+&lt;style lang=&quot;less&quot; scoped&gt;
+.music-list {
+  padding-top: 200px;
+  text-align: center;
+  margin-top: 20rem;
+  width: 50%;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+/deep/ .menu-list a {
+  border-radius: 10px;
+  color: white;
+}
+/deep/ .menu-list a:hover {
+  background-color: #E56D9B;
+}
+/deep/ .menu-label {
+  font-size: 1rem !important;
+}
+/deep/ span {
+  font-size: 1.2rem !important;
+}
+&lt;/style&gt;
+</code></pre><p>注意这里使用的 /deep/ 是为了改变我使用的 Buefy 的 Menu 样式。</p>
+<p>有了这些内容，我们写一个 Header 来帮助用户定位，</p>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;header&quot;&gt;
+    &lt;div class=&quot;link-container&quot;&gt;
+      &lt;router-link :to=&quot;{ name: &#39;Landing&#39; }&quot; class=&quot;link&quot;&gt;
+        &lt;img src=&quot;../assets/logo.png&quot; style=&quot;height: 3rem&quot;&gt;
+      &lt;/router-link&gt;
+      &lt;router-link :to=&quot;{ name: &#39;Landing&#39; }&quot; class=&quot;link text-link&quot;&gt;
+        ArcLight
+      &lt;/router-link&gt;
+      &lt;router-link :to=&quot;{ name: &#39;MusicMenu&#39; }&quot; class=&quot;link text-link&quot;&gt;
+        Music
+      &lt;/router-link&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style lang=&quot;less&quot; scoped&gt;
+.link-container {
+  margin-top: 2rem;
+  margin-left: 2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.link {
+  margin-left: .75rem;
+  font-size: 1.2rem;
+}
+.text-link {
+  margin-bottom: 5px;
+}
+.text-link:hover {
+  animation-name: colorChange;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-in-out;
+  color: #ff92bc;
+}
+@keyframes colorChange {
+  0% {
+    color: white;
+  }
+  100% {
+    color: #ff92bc;
+  }
+}
+/deep/ a {
+  color: white;
+}
+&lt;/style&gt;
+</code></pre><p>好了，现在我们有了一个完整的页面来显示：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/31/kUL1NxdHWl76Vmr.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/31/xUIg8n6LYaWDtmh.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/31/Jn9CSfgWIMUhDpu.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>大概就是长成这样。</p>
+<p>我们尝试使用</p>
+<pre><code>yarn build
+</code></pre><p>构建我们的页面 App，然后我们再来 deploy-dir，一定能成功。<br><code>yarn build</code> 不会花很久，然后我们继续运行同一个命令，这次我们把 目录改成 <code>yarn build</code> 之后生成的文件目录 <code>./dist</code></p>
+<pre><code>arweave deploy-dir ./dist --key-file secrets/ayaka.key.json
+</code></pre><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/31/hrGdEzvaXL189Kn.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>整个过程都看起来没什么问题，我们的 Transaction 已经被提交并且能够被访问了，我们点击链接。</p>
+<p><strong>？？？</strong><br><strong>为什么什么都没有？</strong></p>
+<p>打开开发者工具查看 Console 发现所有资源全部都报错了，说明没有到服务器上，可是我们使用工具查阅 transaction：<a href="https://viewblock.io/arweave/tx/7wRXzBZqahTCGn1iZlCqpMuAToZplGtqxkNYM5ywztg" target="_blank" rel="noopener">https://viewblock.io/arweave/tx/7wRXzBZqahTCGn1iZlCqpMuAToZplGtqxkNYM5ywztg</a><br>发现的确已经部署上去了，问题出在哪里？</p>
+<h3 id="部署失败了"><a href="#部署失败了" class="headerlink" title="部署失败了"></a>部署失败了</h3><p>我们尝试官方文档说的：</p>
+<pre><code>arweave deploy ./dist/index.html --package --key-file secrets/ayaka.key.json
+</code></pre><p>我们再去尝试访问：<br><a href="https://7xr6o7ief7vrfrlm7ixvekkphritxtylffurzcmp67ckkfc6mvnq.arweave.net/_ePnfQQv6xLFbPovUilPPFE7zwspaRyJj_fEpRReZVs" target="_blank" rel="noopener">https://7xr6o7ief7vrfrlm7ixvekkphritxtylffurzcmp67ckkfc6mvnq.arweave.net/_ePnfQQv6xLFbPovUilPPFE7zwspaRyJj_fEpRReZVs</a><br>发现还是不行。为什么呢？<br>从理论上而言，我们使用 Webpack 打包文件的话，是需要一个 source map 和 js 文件来协同工作的，就像参照 ASCII 表格来分析二进制代码一样。可是我们查阅 transaction，文件 vendor 都是被打包上传好的。<br>我发现自己一个人是解决不了这个问题的，于是在 Discord 上提问：</p>
+<p>他们建议我使用 status 命令看看状态，因为文件必须要被 mined 到一个 accepted block 之后才可以被访问：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/31/nLyItOm1NZjMrpe.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>但是结果显而易见，是成功的状态。</p>
+<h2 id="第三天的挣扎"><a href="#第三天的挣扎" class="headerlink" title="第三天的挣扎"></a>第三天的挣扎</h2><h3 id="发现原因"><a href="#发现原因" class="headerlink" title="发现原因"></a>发现原因</h3><p>我提出了问题之后，在 Discord 上有一位十分热心的用户帮我看了问题，在第三天的时候给了回复：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/31/WLUfxFydgrZevtH.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>他说的确看起来一切都是被上传的，可是不知道为什么 proxy 系统没有正常工作提供路由地址。<br>也有人说是不是没有使用 –package 参数打包 index.html 文件导致的，可是我尝试了这个方法，也不能确保文件正常，比如被编码过后的网站图标变得不可用了，即便打开开发者工具栏依然可以看到是 base64 编码的 data/image</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/31/y1SK6asYUnqViPo.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>不久之后他提出了问题的关键所在，关键所在就是<strong>我不能对着每一个资源使用绝对路径，而是相对路径</strong>，这样就能访问到我们需要的东西了。</p>
+<h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><p>想要解决这个问题也很简单，我们需要去 config/index.js 的配置文件中告诉 Webpack 我们的链接替换方式，<br>我们打开 <a href="https://github.com/AyakaLab/ArcLight/blob/5de0607a12bffe48d1646f5f640ad0e7aea73dcb/config/index.js" target="_blank" rel="noopener">config/index.js</a> 文件就能看到：</p>
+<pre><code>build: {
+    // Template for index.html
+    index: path.resolve(__dirname, &#39;../dist/index.html&#39;),
+
+    // Paths
+    assetsRoot: path.resolve(__dirname, &#39;../dist&#39;),
+    assetsSubDirectory: &#39;static&#39;,
+    assetsPublicPath: &#39;/&#39;,
+
+    /**
+        * Source Maps
+        */
+
+    productionSourceMap: true,
+    // https://webpack.js.org/configuration/devtool/#production
+    devtool: &#39;#source-map&#39;,
+
+    // Gzip off by default as many popular static hosts such as
+    // Surge or Netlify already gzip all static assets for you.
+    // Before setting to `true`, make sure to:
+    // npm install --save-dev compression-webpack-plugin
+    productionGzip: false,
+    productionGzipExtensions: [&#39;js&#39;, &#39;css&#39;],
+
+    // Run the build command with an extra argument to
+    // View the bundle analyzer report after build finishes:
+    // `npm run build --report`
+    // Set to `true` or `false` to always turn it on or off
+    bundleAnalyzerReport: process.env.npm_config_report
+    }
+</code></pre><p>在 <code>assetsSubDirectory</code> 和 <code>assetsPublicPath</code> 的位置需要进行调整。<br>应该调整为下面的两个值，在每个值前面确保是 <strong>./</strong> 就可以了：</p>
+<pre><code>build: {
+    // Template for index.html
+    index: path.resolve(__dirname, &#39;../dist/index.html&#39;),
+
+    // Paths
+    assetsRoot: path.resolve(__dirname, &#39;../dist&#39;),
+    assetsSubDirectory: &#39;./static&#39;,
+    assetsPublicPath: &#39;./&#39;,
+
+    /**
+     * Source Maps
+     */
+
+    productionSourceMap: true,
+    // https://webpack.js.org/configuration/devtool/#production
+    devtool: &#39;#source-map&#39;,
+
+    // Gzip off by default as many popular static hosts such as
+    // Surge or Netlify already gzip all static assets for you.
+    // Before setting to `true`, make sure to:
+    // npm install --save-dev compression-webpack-plugin
+    productionGzip: false,
+    productionGzipExtensions: [&#39;js&#39;, &#39;css&#39;],
+
+    // Run the build command with an extra argument to
+    // View the bundle analyzer report after build finishes:
+    // `npm run build --report`
+    // Set to `true` or `false` to always turn it on or off
+    bundleAnalyzerReport: process.env.npm_config_report
+  }
+</code></pre><p>于是现在我们再尝试</p>
+<pre><code>yarn build
+arweave deploy-dir ./dist --key-file secrets/ayaka.key.json
+</code></pre><p>点击新的链接： <a href="https://arweave.net/DdjCHM9GiWxQ7NnRQq_jJ7Ib4kOe8tlSchdu4nGbVWw" target="_blank" rel="noopener">https://arweave.net/DdjCHM9GiWxQ7NnRQq_jJ7Ib4kOe8tlSchdu4nGbVWw</a> ，就发现一切都可以用了。</p>
+<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>在 Arweave 的 Web App 上，你必须使用 <strong>相对路径</strong> 来填充你的资源（Assets），而不是默认配置的 <strong>绝对路径</strong>。<br>这个问题在其他前端框架上一样可能出现问题，因为都是基于 Webpack 给的打包文件和 Source Map，所以如果你也在给 Arweave 开发 Web App，就要小心这个问题了。</p>
+<p>Webpack 的确可以在 Arweave 上使用，所有的外部资源都可以被调用，但是一定要注意：你必须使用 <strong>相对路径</strong> 来填充你的资源（Assets），而不是默认配置的 <strong>绝对路径</strong>。<br>另外就是，如果使用 vue-router 来进行路由的话，记得<strong>模式应该设置为 <code>Hash</code></strong>。如果你使用 React 或者其他前端框架，也应该考虑相应的问题。<br>以上就是我在 Arweave 踩到的坑啦。</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>谢谢 Discord 帮我寻找问题的每一个人，谢谢 Arweave 团队能够做出这样惊喜的作品。<br>也谢谢其他 dApp 作者给的启发，没有你们就没有现在的 ArcLight。</p>
+<p>现在 ArcLight 应邀 Arweave 团队在 GitCoin 的 Hackathon 邀请，现在作为一个可以上传和发布音乐作品的 Web App 存在着，在将来的一个月都会专注于开发这个部分的内容。</p>
+<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p>隐私社交工具 Maskbook 集成 Arweave 支持永久储存文件： <a href="https://www.chainnews.com/news/107645751530.htm" target="_blank" rel="noopener">https://www.chainnews.com/news/107645751530.htm</a><br>ArcLight： <a href="https://github.com/AyakaLab/ArcLight" target="_blank" rel="noopener">https://github.com/AyakaLab/ArcLight</a><br>Arweave.js： <a href="https://github.com/ArweaveTeam/arweave-js" target="_blank" rel="noopener">https://github.com/ArweaveTeam/arweave-js</a><br>dApp 列表： <a href="https://mtfvznw2pwxykoicvxpoe7ao5rp4nhaueueux2bbe4klxankdhra.arweave.net/ZMtcttp9r4U5Aq3e4nwO7F_GnBQlCUvoIScUu4GqGeI/" target="_blank" rel="noopener">https://mtfvznw2pwxykoicvxpoe7ao5rp4nhaueueux2bbe4klxankdhra.arweave.net/ZMtcttp9r4U5Aq3e4nwO7F_GnBQlCUvoIScUu4GqGeI/</a><br>Arweave Deploy： <a href="https://github.com/ArweaveTeam/arweave-deploy" target="_blank" rel="noopener">https://github.com/ArweaveTeam/arweave-deploy</a><br>Arweave Viewer： <a href="https://viewblock.io/arweave" target="_blank" rel="noopener">https://viewblock.io/arweave</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-08-31T14:44:03.000Z" itemprop="dateUpdated">2020-08-31 22:44:03</time>
+</span><br>
+
+
+        
+        永久链接：<a href="/2020/08/31/044/" target="_blank" rel="external">https://neko.ayaka.moe/2020/08/31/044/</a><br>你相信命运是可以被改变的吗？
+        
+    </div>
+    
+    <footer>
+        <a href="https://neko.ayaka.moe">
+            <img src="/img/avatar.jpg" alt="Ayaka Neko">
+            Ayaka Neko
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Arweave/" rel="tag">Arweave</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/P2P/" rel="tag">P2P</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E7%BA%BA/" rel="tag">区块纺</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://neko.ayaka.moe/2020/08/31/044/&title=《Arweave 储存网站》 — 喵&pic=https://neko.ayaka.moe/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://neko.ayaka.moe/2020/08/31/044/&title=《Arweave 储存网站》 — 喵&source=前言初识 Arweave 是在看到这样的一条新闻：隐私社交工具 Maskbook 集成 Arweave 支持永久储存文件
+                ..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://neko.ayaka.moe/2020/08/31/044/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Arweave 储存网站》 — 喵&url=https://neko.ayaka.moe/2020/08/31/044/&via=https://neko.ayaka.moe" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/08/28/043/" id="post-next" class="post-nav-link">
+        <div class="tips">后一页 <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">在基于 Three.js 的 3D 地球上放置图片</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'fanff0324';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+<script src="https://unpkg.com/fanlocker/dist/fanlocker.js"></script>
+<script>
+  let fl = new FanLocker({
+    clientId: '082228580745414',
+    clientSecret: '81214de3ddbd2bac'
+  })
+</script>
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <br>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>全站共有 53.2k 字</span>
+            <span>Ayaka Neko &copy; 2013 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://neko.ayaka.moe/2020/08/31/044/&title=《Arweave 储存网站》 — 喵&pic=https://neko.ayaka.moe/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://neko.ayaka.moe/2020/08/31/044/&title=《Arweave 储存网站》 — 喵&source=前言初识 Arweave 是在看到这样的一条新闻：隐私社交工具 Maskbook 集成 Arweave 支持永久储存文件
+                ..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://neko.ayaka.moe/2020/08/31/044/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Arweave 储存网站》 — 喵&url=https://neko.ayaka.moe/2020/08/31/044/&via=https://neko.ayaka.moe" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://neko.ayaka.moe/2020/08/31/044/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '在这里等你回来哦';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎回来呢！';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

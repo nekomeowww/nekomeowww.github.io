@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>在基于 Three.js 的 3D 地球上放置图片 | 喵 | 欢迎光临喵~</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#EC4E6F">
+    
+    
+    <meta name="keywords" content="CryptoMeetup,Three.js,3D,地球,2D转3D">
+    <meta name="description" content="前言和之前的 Mapbox 的文章一样，这篇文章的由来也是在我接手开发 Crypto Meetup 的时候遇到的一个实现问题。这个问题的来源是因为我本身对 Three.js 的不熟悉导致的，但是大家都知道，Three.js 是 Node.js 中十分著名而且简单的 WebGL 的实现库，你可以绘制动态的 2D 或者 3D 的物件或者是场景，甚至是写就一个游戏也是没问题的。Crypto Meetup">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在基于 Three.js 的 3D 地球上放置图片">
+<meta property="og:url" content="https://neko.ayaka.moe/2020/08/28/043/index.html">
+<meta property="og:site_name" content="喵">
+<meta property="og:description" content="前言和之前的 Mapbox 的文章一样，这篇文章的由来也是在我接手开发 Crypto Meetup 的时候遇到的一个实现问题。这个问题的来源是因为我本身对 Three.js 的不熟悉导致的，但是大家都知道，Three.js 是 Node.js 中十分著名而且简单的 WebGL 的实现库，你可以绘制动态的 2D 或者 3D 的物件或者是场景，甚至是写就一个游戏也是没问题的。Crypto Meetup">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/08/31/py3iN7bmXKatZ2O.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/31/GO6r7MTY2pxFWUm.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/31/rqKSbGW8pBjs6ck.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/31/ewtTEZ72WYSXIUy.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/31/l5uE8TjRoO1ZPfN.png">
+<meta property="article:published_time" content="2020-08-28T14:44:03.000Z">
+<meta property="article:modified_time" content="2020-08-28T14:44:03.000Z">
+<meta property="article:author" content="Ayaka Neko">
+<meta property="article:tag" content="CryptoMeetup">
+<meta property="article:tag" content="Three.js">
+<meta property="article:tag" content="3D">
+<meta property="article:tag" content="地球">
+<meta property="article:tag" content="2D转3D">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/08/31/py3iN7bmXKatZ2O.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="喵" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.jpg">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.png)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Ayaka Neko</h5>
+          <a href="mailto:neko@ayaka.moe" title="neko@ayaka.moe" class="mail">neko@ayaka.moe</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                好多标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                各个分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-heart"></i>
+                关于猫猫
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="mailto:neko@ayaka.moe"  >
+                <i class="icon icon-lg icon-envelope-open"></i>
+                Email 地址
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/nekomeowww" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/ayakaneko" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/id/ayakaneko" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">在基于 Three.js 的 3D 地球上放置图片</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">在基于 Three.js 的 3D 地球上放置图片</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-08-28T14:44:03.000Z" itemprop="datePublished" class="page-time">
+  2020-08-28
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Guide/">Guide</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#是什么问题呢？"><span class="post-toc-number">2.</span> <span class="post-toc-text">是什么问题呢？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#寻找参考资料"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">寻找参考资料</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么-Geometry-类型才适合？"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">什么 Geometry 类型才适合？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本的代码"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">基本的代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#直角坐标和球面坐标的转换"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">直角坐标和球面坐标的转换</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#摄影机的视角跟踪怎么做？"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">摄影机的视角跟踪怎么做？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#最后的结果"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">最后的结果</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#最终的代码"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">最终的代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#最后"><span class="post-toc-number">3.</span> <span class="post-toc-text">最后</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#链接和参考"><span class="post-toc-number">4.</span> <span class="post-toc-text">链接和参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-043"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">在基于 Three.js 的 3D 地球上放置图片</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-08-28 22:44:03" datetime="2020-08-28T14:44:03.000Z"  itemprop="datePublished">2020-08-28</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Guide/">Guide</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            <br>
+            <br>
+            共有字数 2.3k 字 | 阅读时间 9 分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>和之前的 Mapbox 的文章一样，这篇文章的由来也是在我接手开发 Crypto Meetup 的时候遇到的一个实现问题。这个问题的来源是因为我本身对 Three.js 的不熟悉导致的，但是大家都知道，Three.js 是 Node.js 中十分著名而且简单的 WebGL 的实现库，你可以绘制动态的 2D 或者 3D 的物件或者是场景，甚至是写就一个游戏也是没问题的。<br><a href="https://cryptomeetup.async.moe" target="_blank" rel="noopener">Crypto Meetup</a> 是我在入职仙女座星系之后接手的第一个 Dapp 项目，目的是让用户之间可以共享地理位置，可以在持有特定 Fan 票的情况下，解锁他人的地理位置分享。虽然说叫 Dapp，但其实最终产品在写就的时候就没有太多关于区块链和去中心化的技术，使用的依然是 Vue 前端 + Koa2 后端这样的一个模式来完成的开发，最终部署到你们看到的网站的时候，也是依赖于中心化服务器提供的数据，所以说不算是一个严谨的 Dapp 吧，但是作为 Matataki 的一个小应用，还是蛮不错的，我在其中也学到了 Vue 项目的基本结构和如何构建的知识。</p>
+<a id="more"></a>
+<h1 id="是什么问题呢？"><a href="#是什么问题呢？" class="headerlink" title="是什么问题呢？"></a>是什么问题呢？</h1><p>在 Crypto Meetup 中，我们有两个东西组成，一个是平面地图的展示，一个是 3D 地球的展示，我们在<a href="https://neko.ayaka.moe/2020/06/30/040/">上一篇相关的文章</a>里面写到了关于怎么实现 Mapbox 在地图上渲染用户头像，以及 Mapbox 实现鼠标划过变色的具体实现问题和解决方案。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/31/py3iN7bmXKatZ2O.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>现在我们要做的，就是把用户的头像放到地球上，然后让地球上进行 2D 到 3D 的坐标转换，也就是球面坐标转换，还有令一点就是，用户头像是扁平的图像，是圆形的一个 2D 物体，我们还要让这个物体永远对齐我们的摄像机对准的地方。</p>
+<p>因为我一开始对于怎么实现这个地球是十分疑惑的，在之前的人写下的代码中，使用了渲染器的代码，看起来不免有些困难，但是这个不是重点。我去找了很多资料，真的是非常多非常多的资料。</p>
+<h2 id="寻找参考资料"><a href="#寻找参考资料" class="headerlink" title="寻找参考资料"></a>寻找参考资料</h2><p>我先浏览的是 Three.js 提供的官方案例：<a href="https://threejs.org/examples/" target="_blank" rel="noopener">https://threejs.org/examples/</a><br>然后搜索了 geometry，发现没有什么比较类似的案例。于是我转向了搜索引擎，去寻找更多的案例。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/31/GO6r7MTY2pxFWUm.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<center>webgl geometry convex by <a href="https://threejs.org/examples/?q=geometry#webgl_geometry_convex" target="_blank" rel="noopener">Three.js</a></center>
+
+<p>首先是这个问题： <a href="https://stackoverflow.com/questions/46017167/how-to-place-marker-with-lat-lon-on-3d-globe-three-js" target="_blank" rel="noopener">How To Place Marker with Lat/Lon On 3D Globe, Three.js?
+</a></p>
+<p>后来找到了一个网站：<a href="http://stemkoski.github.io/Three.js/index.html" target="_blank" rel="noopener">http://stemkoski.github.io/Three.js/index.html</a><br>在这个网站里我找到了一个类似我们实现的内容的演示案例：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/31/rqKSbGW8pBjs6ck.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<center>Labeled Geometry by <a href="https://github.com/stemkoski" target="_blank" rel="noopener">Lee Stemkoski</a></center>
+
+<p>接下来我看了源代码：</p>
+<pre><code>var spriteMaterial = new THREE.SpriteMaterial( 
+    { map: texture, useScreenCoordinates: false, alignment: spriteAlignment } );
+</code></pre><h2 id="什么-Geometry-类型才适合？"><a href="#什么-Geometry-类型才适合？" class="headerlink" title="什么 Geometry 类型才适合？"></a>什么 Geometry 类型才适合？</h2><p>他使用的是 Sprite 这个 Object API 来完成的，但是 Sprite 在加载图像作为 SpirteMaterial 的时候会有渲染不到的困难。于是我开始搜寻怎么样转换 2D 到 3D 的方法可以让我转换图片为一个所谓的 Mesh 对象。<br>我们先回去看看 Mesh 是怎么介绍的：<a href="https://threejs.org/docs/#api/zh/objects/Mesh" target="_blank" rel="noopener">Mesh - Three.js Documentation</a>，在文档中，Mesh 是一个网格，是每一个 Geometry 结构的基础，是绘制图案的基本来源，我们定义 Mesh 之后，为我们的对象添加 Material 才能被渲染出来。接下来问题就来了，我应该用什么 Geometry？<br><strong>2D 转 3D？什么样的 Geometry 才适合我们？我们已经知道 Sprite 是行不通的，我们需要换一个方案，</strong><br>我找到了这个问题 <a href="https://stackoverflow.com/questions/19121349/converting-a-3d-scene-to-2d-image-using-raytracing-webgl-three-js" target="_blank" rel="noopener">Converting a 3D-Scene to 2D-image using raytracing (webgl, three.js)
+</a><br>但是似乎不是我们想要的答案，这里只是描述了 scene 的区别，和转换的理论方法。<br>我再找到了这个 <a href="https://stackoverflow.com/questions/31297567/how-do-you-build-a-custom-plane-geometry-in-three-js" target="_blank" rel="noopener">How do you build a custom plane geometry in three.js? - StackOverflow</a>，在这个问题的回答下面有很多方案，但是我看了另一个问题之后明确了我们需要的是什么：<br><a href="https://stackoverflow.com/questions/11325548/creating-a-plane-adding-a-texture-on-both-sides-and-rotating-the-object-on-its" target="_blank" rel="noopener">Creating a plane, adding a texture on both sides and rotating the object on its side - StackOverflow</a>，在这个回答下面，以及提问的代码中我们可以看到，使用了大量的 PlaneGeometry 来作为我们的图片承载对象。<br>那也就是说，<strong>我们 2D 物体都是基于 PlaneGeometry 完成的</strong>，那么怎么加载外部图像文件呢？<br>我找到了这个问题：<a href="https://stackoverflow.com/questions/16029103/three-js-using-2d-texture-sprite-for-animation-planegeometry" target="_blank" rel="noopener">Three.js Using 2D texture\sprite for animation (planeGeometry) - StackOverflow</a><br>我们发现，<code>THREE.ImageUtils.loadTexture()</code> 这个函数为我们加载了图像资源，后来又在下面看到，这个方法在后来的 Three.js 版本中废弃了，不得不换成 <code>THREE.TextureLoader().load()</code> 才能使用</p>
+<h2 id="基本的代码"><a href="#基本的代码" class="headerlink" title="基本的代码"></a>基本的代码</h2><p>于是我开始写代码。</p>
+<pre><code>const image = new THREE.TextureLoader().load(process.env.VUE_APP_CMUAPI + &#39;/user/avatar?id=1332&#39;);
+const geometry = new THREE.PlaneGeometry(10, 10, 1, 1)
+const material = new THREE.MeshBasicMaterial({ map: image, transparent: true, side: THREE.DoubleSide })
+const result = new THREE.Mesh(geometry, material)
+</code></pre><p>我们先把这个物品放到 0，0，0 这个坐标上，然后注释掉渲染地球和其他物品的代码，我们刷新页面发现我们的图片被正确的加载了。也能正常的旋转，那么我们接下来要做的就是怎么去进行球面坐标的转换：</p>
+<h2 id="直角坐标和球面坐标的转换"><a href="#直角坐标和球面坐标的转换" class="headerlink" title="直角坐标和球面坐标的转换"></a>直角坐标和球面坐标的转换</h2><p>按照<a href="https://zhuanlan.zhihu.com/p/34485962" target="_blank" rel="noopener">球坐标与直角坐标的转换 - 知乎</a> 和 <a href="https://zh.wikipedia.org/wiki/%E7%90%83%E5%BA%A7%E6%A8%99%E7%B3%BB" target="_blank" rel="noopener">球坐标系 - Wikipedia</a> 的介绍，我们知道了这个公式可以给我们进行几何坐标的转换。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/31/ewtTEZ72WYSXIUy.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<center>转换公式 by <a href="https://zh.wikipedia.org/wiki/%E7%90%83%E5%BA%A7%E6%A8%99%E7%B3%BB" target="_blank" rel="noopener">球坐标系 - Wikipedia</a></center>
+
+<p>我们把这个写到代码里，</p>
+<pre><code>const phi = (90 - lat) * Math.PI / 180 // lat 是 纬度
+const theta = (180 - lon) * Math.PI / 180 // lon 是 经度
+
+const x = (EARTH_RADIUS + 8) * Math.sin(phi) * Math.cos(theta)
+const y = (EARTH_RADIUS + 8) * Math.cos(phi)
+const z = (EARTH_RADIUS + 8) * Math.sin(phi) * Math.sin(theta)
+</code></pre><p>于是这样，我们就得到了我们的参数，x，y 和 z。<br>我们把之前渲染好的图片位置传入进去：</p>
+<pre><code>result.position.x = x
+result.position.y = y
+result.position.z = z
+this.scene.add(result)
+</code></pre><h2 id="摄影机的视角跟踪怎么做？"><a href="#摄影机的视角跟踪怎么做？" class="headerlink" title="摄影机的视角跟踪怎么做？"></a>摄影机的视角跟踪怎么做？</h2><p>好了，现在我们的头像可以紧紧的贴在我们的地球上，并且永远朝向一个方向，那么问题来了，我们怎么样才能使头像永远对齐我们的摄像机呢（也就是我们的视角）？<br>我查阅了 PlaneGeometry 的确有一个 <code>lookAt(camera.position)</code> 这样的使用方法，但是当我用到我们实际的代码的时候却没有什么反应。<br>我们在这个问题下找到了一些答案，<a href="https://stackoverflow.com/questions/12919638/textgeometry-to-always-face-user" target="_blank" rel="noopener">TextGeometry to always face user? - StackOverflow</a></p>
+<pre><code>mesh.quaternion.copy(camera.quaternion)
+</code></pre><p>这个方法相当于给 mesh 复制了一份动态的 摄像机 位置，但是这个方法不是动态的。<br>但是这样是不够的，我在另一个帖子里找到了最终解决这个问题的方法，首先我们在 Class 内定义一个 AvatarResult 数组来存储这些渲染好的图像，</p>
+<pre><code>this.AvatarResult.push(result)
+</code></pre><p>我们在 <code>this.scene.add(result)</code> 之后添加到这个数组里，之后我们到 animate（也就是你的 this.render 所在的地方） 这个全局函数的地方，使用 forEach 方法，为每一个 Avatar 对象添加这个动态变化的参数</p>
+<pre><code>@autobind
+animate() {
+    if (!this.running) {
+        return;
+    }
+    this.AvatarResult.forEach(e =&gt; e.rotation.setFromRotationMatrix(this.camera.matrix))
+    requestAnimationFrame(this.animate);
+    this.render();
+}
+</code></pre><h2 id="最后的结果"><a href="#最后的结果" class="headerlink" title="最后的结果"></a>最后的结果</h2><p>最终我们获得了这样的结果：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/31/l5uE8TjRoO1ZPfN.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h2 id="最终的代码"><a href="#最终的代码" class="headerlink" title="最终的代码"></a>最终的代码</h2><p>最后，我们全部的代码只有很少的几行：</p>
+<pre><code>addNewPoint(lon, lat, magnitude, uid) {
+    const phi = (90 - lat) * Math.PI / 180;
+    const theta = (180 - lon) * Math.PI / 180;
+
+    const x = (EARTH_RADIUS + 8) * Math.sin(phi) * Math.cos(theta);
+    const y = (EARTH_RADIUS + 8) * Math.cos(phi);
+    const z = (EARTH_RADIUS + 8) * Math.sin(phi) * Math.sin(theta);
+
+    const image = new THREE.TextureLoader().load(process.env.VUE_APP_CMUAPI + &#39;/user/avatar?id=&#39; + uid);
+    const geometry = new THREE.PlaneGeometry(10, 10, 1, 1)
+    const material = new THREE.MeshBasicMaterial({ map: image, transparent: true, side: THREE.DoubleSide })
+    const result = new THREE.Mesh(geometry, material)
+    result.position.x = x
+    result.position.y = y
+    result.position.z = z
+    result.quaternion.copy(this.camera.quaternion)
+    this.scene.add(result)
+    this.AvatarResult.push(result)
+}
+
+@autobind
+animate() {
+    if (!this.running) {
+        return;
+    }
+    this.AvatarResult.forEach(e =&gt; e.rotation.setFromRotationMatrix(this.camera.matrix))
+    requestAnimationFrame(this.animate);
+    this.render();
+}
+</code></pre><p>这样我们就完成了我们要实现的内容了。</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>谢谢你阅读到这里，感谢你对猫猫的支持，如果文中有什么地方写的不对和不够也希望大家能够指正。<br>因为国内 Three.js 的案例和解释还有文档实在不多，而且 Three.js 的官方文档查阅起来和搜索起来并不是很全面，在这里踩了很多很多的坑。<br>如果你也有类似的需求和需要，也感谢你阅读这些内容，也请放心，请自由的使用我在这篇文章中使用的任何代码</p>
+<h1 id="链接和参考"><a href="#链接和参考" class="headerlink" title="链接和参考"></a>链接和参考</h1><p>Mesh - Three.js Documentation: <a href="https://threejs.org/docs/#api/zh/objects/Mesh" target="_blank" rel="noopener">https://threejs.org/docs/#api/zh/objects/Mesh</a></p>
+<p>webgl geometry convex by <a href="https://threejs.org/examples/?q=geometry#webgl_geometry_convex" target="_blank" rel="noopener">Three.js</a><br>Labeled Geometry by <a href="https://github.com/stemkoski" target="_blank" rel="noopener">Lee Stemkoski</a><br><a href="https://stackoverflow.com/questions/31297567/how-do-you-build-a-custom-plane-geometry-in-three-js" target="_blank" rel="noopener">How do you build a custom plane geometry in three.js? - StackOverflow</a><br><a href="https://stackoverflow.com/questions/11325548/creating-a-plane-adding-a-texture-on-both-sides-and-rotating-the-object-on-its" target="_blank" rel="noopener">Creating a plane, adding a texture on both sides and rotating the object on its side - StackOverflow</a><br><a href="https://stackoverflow.com/questions/16029103/three-js-using-2d-texture-sprite-for-animation-planegeometry" target="_blank" rel="noopener">Three.js Using 2D texture\sprite for animation (planeGeometry) - StackOverflow</a><br><a href="https://zhuanlan.zhihu.com/p/34485962" target="_blank" rel="noopener">球坐标与直角坐标的转换 - 知乎</a><br><a href="https://zh.wikipedia.org/wiki/%E7%90%83%E5%BA%A7%E6%A8%99%E7%B3%BB" target="_blank" rel="noopener">球坐标系 - Wikipedia</a><br><a href="https://stackoverflow.com/questions/12919638/textgeometry-to-always-face-user" target="_blank" rel="noopener">TextGeometry to always face user? - StackOverflow</a></p>
+<p>感谢以上所有提供资源的作者和提问者，如果没有他们，也就不会有我的结果和最终的产品。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-08-28T14:44:03.000Z" itemprop="dateUpdated">2020-08-28 22:44:03</time>
+</span><br>
+
+
+        
+        永久链接：<a href="/2020/08/28/043/" target="_blank" rel="external">https://neko.ayaka.moe/2020/08/28/043/</a><br>你相信命运是可以被改变的吗？
+        
+    </div>
+    
+    <footer>
+        <a href="https://neko.ayaka.moe">
+            <img src="/img/avatar.jpg" alt="Ayaka Neko">
+            Ayaka Neko
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2D%E8%BD%AC3D/" rel="tag">2D转3D</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/3D/" rel="tag">3D</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CryptoMeetup/" rel="tag">CryptoMeetup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9C%B0%E7%90%83/" rel="tag">地球</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://neko.ayaka.moe/2020/08/28/043/&title=《在基于 Three.js 的 3D 地球上放置图片》 — 喵&pic=https://neko.ayaka.moe/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://neko.ayaka.moe/2020/08/28/043/&title=《在基于 Three.js 的 3D 地球上放置图片》 — 喵&source=前言和之前的 Mapbox 的文章一样，这篇文章的由来也是在我接手开发 Crypto Meetup 的时候遇到的一个实现问题。这个问题的来源是因为我本身对..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://neko.ayaka.moe/2020/08/28/043/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《在基于 Three.js 的 3D 地球上放置图片》 — 喵&url=https://neko.ayaka.moe/2020/08/28/043/&via=https://neko.ayaka.moe" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/08/31/044/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> 前一页</div>
+        <h4 class="title">Arweave 储存网站</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/08/25/042/" id="post-next" class="post-nav-link">
+        <div class="tips">后一页 <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Hexo 和 hexo-plugin-matataki 的使用和开发后记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'fanff0324';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+<script src="https://unpkg.com/fanlocker/dist/fanlocker.js"></script>
+<script>
+  let fl = new FanLocker({
+    clientId: '082228580745414',
+    clientSecret: '81214de3ddbd2bac'
+  })
+</script>
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <br>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>全站共有 53.2k 字</span>
+            <span>Ayaka Neko &copy; 2013 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://neko.ayaka.moe/2020/08/28/043/&title=《在基于 Three.js 的 3D 地球上放置图片》 — 喵&pic=https://neko.ayaka.moe/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://neko.ayaka.moe/2020/08/28/043/&title=《在基于 Three.js 的 3D 地球上放置图片》 — 喵&source=前言和之前的 Mapbox 的文章一样，这篇文章的由来也是在我接手开发 Crypto Meetup 的时候遇到的一个实现问题。这个问题的来源是因为我本身对..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://neko.ayaka.moe/2020/08/28/043/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《在基于 Three.js 的 3D 地球上放置图片》 — 喵&url=https://neko.ayaka.moe/2020/08/28/043/&via=https://neko.ayaka.moe" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://neko.ayaka.moe/2020/08/28/043/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '在这里等你回来哦';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎回来呢！';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

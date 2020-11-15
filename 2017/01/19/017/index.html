@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Elite Dangerous（精英危险）Reshade 3.0 设置 | 喵 | 欢迎光临喵~</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#EC4E6F">
+    
+    
+    <meta name="keywords" content="指南,Elite Dangerous,精英危险,Reshade,EDFX,Reshade 3.0,画面后期特效,Graphic Post Effects">
+    <meta name="description" content="Reshade 是 edfx 的依赖程序，如果想要自己配置 Elite Dangerous 的画面&#x2F;增强 ED 的画面，可以使用 Reshade 自身然后手动调整数值，自由度会相对高一些。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Elite Dangerous（精英危险）Reshade 3.0 设置">
+<meta property="og:url" content="https://neko.ayaka.moe/2017/01/19/017/index.html">
+<meta property="og:site_name" content="喵">
+<meta property="og:description" content="Reshade 是 edfx 的依赖程序，如果想要自己配置 Elite Dangerous 的画面&#x2F;增强 ED 的画面，可以使用 Reshade 自身然后手动调整数值，自由度会相对高一些。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.imgur.com/Zc57T6O.jpg">
+<meta property="og:image" content="https://i.imgur.com/cujlDPu.jpg">
+<meta property="og:image" content="https://i.imgur.com/Zc57T6O.jpg">
+<meta property="og:image" content="https://i.imgur.com/CVpw9Ca.jpg">
+<meta property="og:image" content="https://i.imgur.com/ylghyZj.jpg">
+<meta property="og:image" content="https://i.imgur.com/Q8mvZKr.jpg">
+<meta property="og:image" content="https://i.imgur.com/n4hvoPp.jpg">
+<meta property="og:image" content="https://i.imgur.com/CJ4mriJ.png">
+<meta property="og:image" content="https://i.imgur.com/GQ6jG9y.png">
+<meta property="og:image" content="https://i.imgur.com/pV3dFdw.png">
+<meta property="og:image" content="https://i.imgur.com/kYdFsoZ.png">
+<meta property="og:image" content="https://i.imgur.com/hmyUQVm.png">
+<meta property="og:image" content="https://i.imgur.com/lsgnkk1.png">
+<meta property="og:image" content="https://i.imgur.com/JTYUCnl.png">
+<meta property="og:image" content="https://i.imgur.com/qJtw8n7.png">
+<meta property="og:image" content="https://i.imgur.com/yMWc6co.png">
+<meta property="og:image" content="https://i.imgur.com/yMWc6co.png">
+<meta property="og:image" content="https://i.imgur.com/R0L9SEM.png">
+<meta property="og:image" content="https://i.imgur.com/rkdi8tx.png">
+<meta property="og:image" content="https://i.imgur.com/9D0BJDX.png">
+<meta property="og:image" content="https://i.imgur.com/xXgDO86.png">
+<meta property="og:image" content="https://i.imgur.com/3gVMsdx.png">
+<meta property="og:image" content="https://i.imgur.com/NLIYkg7.png">
+<meta property="og:image" content="https://i.imgur.com/iOzmyAz.png">
+<meta property="article:published_time" content="2017-01-18T19:38:22.000Z">
+<meta property="article:modified_time" content="2017-01-18T19:38:22.000Z">
+<meta property="article:author" content="Ayaka Neko">
+<meta property="article:tag" content="指南">
+<meta property="article:tag" content="Elite Dangerous">
+<meta property="article:tag" content="精英危险">
+<meta property="article:tag" content="Reshade">
+<meta property="article:tag" content="EDFX">
+<meta property="article:tag" content="Reshade 3.0">
+<meta property="article:tag" content="画面后期特效">
+<meta property="article:tag" content="Graphic Post Effects">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/Zc57T6O.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="喵" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.jpg">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.png)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Ayaka Neko</h5>
+          <a href="mailto:neko@ayaka.moe" title="neko@ayaka.moe" class="mail">neko@ayaka.moe</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                好多标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                各个分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-heart"></i>
+                关于猫猫
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="mailto:neko@ayaka.moe"  >
+                <i class="icon icon-lg icon-envelope-open"></i>
+                Email 地址
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/nekomeowww" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/ayakaneko" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/id/ayakaneko" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Elite Dangerous（精英危险）Reshade 3.0 设置</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Elite Dangerous（精英危险）Reshade 3.0 设置</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-18T19:38:22.000Z" itemprop="datePublished" class="page-time">
+  2017-01-19
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Guide/">Guide</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#介绍"><span class="post-toc-number">1.</span> <span class="post-toc-text">介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对比图"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">对比图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用感受"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">使用感受</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下载"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">下载</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#官网直链"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">官网直链</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#百度云分享链接"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">百度云分享链接</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装到Elite-Dangerous"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">安装到Elite: Dangerous</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如果你有-VPN-请跟随这一步（如果没有-VPN，点击这里）"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">如果你有 VPN 请跟随这一步（如果没有 VPN，点击这里）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如果你没有-VPN-请跟随这一步"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">如果你没有 VPN 请跟随这一步</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#百度云分享链接-1"><span class="post-toc-number">2.2.2.1.</span> <span class="post-toc-text">百度云分享链接</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何打开配置界面？"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">如何打开配置界面？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置教程"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">配置教程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置文件选择器"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">配置文件选择器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#特效组"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">特效组</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#变量组"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">变量组</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#教程结束"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">教程结束</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#综合设置"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">综合设置</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#FAQ"><span class="post-toc-number">4.</span> <span class="post-toc-text">FAQ</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#问：下载失败，即便用了-VPN-还是很慢。为什么"><span class="post-toc-number">4.0.0.1.</span> <span class="post-toc-text">问：下载失败，即便用了 VPN 还是很慢。为什么</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#问：为什么游戏打不开了？（黑屏、闪退）"><span class="post-toc-number">4.0.0.2.</span> <span class="post-toc-text">问：为什么游戏打不开了？（黑屏、闪退）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#问：我不想用-Reshade-了，怎么删除？"><span class="post-toc-number">4.0.0.3.</span> <span class="post-toc-text">问：我不想用 Reshade 了，怎么删除？</span></a></li></ol></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-017"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Elite Dangerous（精英危险）Reshade 3.0 设置</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-01-19 03:38:22" datetime="2017-01-18T19:38:22.000Z"  itemprop="datePublished">2017-01-19</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Guide/">Guide</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            <br>
+            <br>
+            共有字数 1.7k 字 | 阅读时间 6 分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>Reshade 是 edfx 的依赖程序，如果想要自己配置 Elite Dangerous 的画面/增强 ED 的画面，可以使用 Reshade 自身然后手动调整数值，自由度会相对高一些。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/Zc57T6O.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<a id="more"></a>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h2 id="对比图"><a href="#对比图" class="headerlink" title="对比图"></a>对比图</h2><p>先来看看对比图吧www<br>之前：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/cujlDPu.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>之后：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/Zc57T6O.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>之前：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/CVpw9Ca.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>之后：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/ylghyZj.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>之前：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/Q8mvZKr.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>之后：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/n4hvoPp.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>————以下内容等待更新————</p>
+<h2 id="使用感受"><a href="#使用感受" class="headerlink" title="使用感受"></a>使用感受</h2><p>原本之前 Neko 有一个更好的配置文件（配置特效的各项数值），后来一次探索的过程中错误的拖移了那个数值…没记住之前的默认数值，后来只能用现在这个饱和度超级高的配置文件*。<br>综合所有 Reshade 带来的画质提升，Reshade 是一款很好的画质加强辅助软件，如果你有学过摄影或者懂得如何使用 Adobe Premiere Pro，那么 Reshade 就像是给游戏套上了一个完全自由和完全自定义的滤镜系统。相比其他来说，目前 Reshade 似乎是唯一一个能实时调整数值的画质加强软件呢。关于探索的截图，上面的对比图应该已经很明显了吧，虽然马上要更新的2.3自带一个官方提供的景深，但是如果迫不及待想要和小伙伴分享你的景深截图的话，Reshade 可以帮你一把；除了景深以外就是饱和度和曝光度的提升，如果你设置了全局快捷键，你可以试试看对比一下原版 ED 和安装 Reshade 之后的样子，Reshade 更加鲜艳一点，阴影部分更加黑暗，亮光部分更亮，而不是原版 ED 这样看似简单的色彩系统（这里 Neko 的意思是，ED 自带的系统已经很完善了，因为优化等原因，FDDev 可能删除了这些小功能，而不是说 ED 画质很差，不过无论如何 Reshade 可以补足这一点）。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><h3 id="官网直链"><a href="#官网直链" class="headerlink" title="官网直链"></a>官网直链</h3><p>先去 Reshade 的官网吧：<a href="reshade.me">reshade.me</a>（国内应该是不能直接访问到这里的，建议开一个 VPN，如果实在没有 VPN 也没有关系，Neko 会将必要的文件上传到百度云公开下载 XD）<br><strong>这个就是 Reshade 的官网啦：</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/CJ4mriJ.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p><strong>这里点击 Download 就可以下载，如果没有VPN的小伙伴继续往下看</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/GQ6jG9y.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h3 id="百度云分享链接"><a href="#百度云分享链接" class="headerlink" title="百度云分享链接"></a>百度云分享链接</h3><p>链接: <a href="http://pan.baidu.com/s/1i4GZFrJ" target="_blank" rel="noopener">http://pan.baidu.com/s/1i4GZFrJ</a> 密码: p97u</p>
+<h2 id="安装到Elite-Dangerous"><a href="#安装到Elite-Dangerous" class="headerlink" title="安装到Elite: Dangerous"></a>安装到Elite: Dangerous</h2><p>下载之后就可以打开这个安装文件（其实应该叫部署文件）<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/pV3dFdw.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>在这里我们先选择<strong>Select Game</strong>，然后在选择游戏的窗口中找到你的 elitedangerous64.exe。<br>Neko 的 Elite Dangerous 是 Steam 安装的，那么一般文件会在</p>
+<pre><code>你的硬盘:\SteamLibrary\steamapps\common\Elite Dangerous\Products\elite-dangerous-64
+</code></pre><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/kYdFsoZ.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p><em>注意：如果你是通过Steam-打开游戏根目录这样的方式打开的游戏目录的话，是不正确的。在通过Steam打开之后，进入Products文件夹，然后找到elite-dangerous-64文件夹，最后就是游戏的根目录了。</em><br>然后选中 elitedangerous64.exe 这个程序：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/hmyUQVm.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>在接下来的这里选择 Direct3D 10+<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/lsgnkk1.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>然后会有一个弹出窗口询问是否从 GitHub 上下载特效文件（因为国内种种原因：GFW 什么的，国内访问速度较慢，甚至无法访问，如果你没有 VPN 的话，就点 <strong>否</strong> 吧。Neko 会在下面给出 Shader Folder 的文件的）<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/JTYUCnl.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h3 id="如果你有-VPN-请跟随这一步（如果没有-VPN，点击这里）"><a href="#如果你有-VPN-请跟随这一步（如果没有-VPN，点击这里）" class="headerlink" title="如果你有 VPN 请跟随这一步（如果没有 VPN，点击这里）"></a>如果你有 VPN 请跟随这一步（如果没有 VPN，点击<a href="#如果你没有 VPN 请跟随这一步">这里</a>）</h3><p><strong>点击“是”</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/qJtw8n7.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p><strong>这里记得一定要取消勾选 SurfaceBlur，因为不知名的原因，SurfaceBlur 的代码有一点小问题，比如无法正确禁用特效之类的事情</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/yMWc6co.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p><strong>然后点“OK”</strong></p>
+<h3 id="如果你没有-VPN-请跟随这一步"><a href="#如果你没有-VPN-请跟随这一步" class="headerlink" title="如果你没有 VPN 请跟随这一步"></a>如果你没有 VPN 请跟随这一步</h3><p><strong>点击“否”</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/yMWc6co.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>这样就表示安装结束。<br>然后来百度云这里下载</p>
+<h4 id="百度云分享链接-1"><a href="#百度云分享链接-1" class="headerlink" title="百度云分享链接"></a>百度云分享链接</h4><p>链接: <a href="http://pan.baidu.com/s/1eSoVLtS" target="_blank" rel="noopener">http://pan.baidu.com/s/1eSoVLtS</a> 密码: xc8t，或者可以通过上面的百度云链接进去，<br>点击 Shaders Folder，把压缩文件下载下来。<br>进入到你的 Elite Dangerous根目录（…\Elite Dangerous\Products\elite-dangerous-64），把压缩文件解压到这里即可<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/R0L9SEM.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>然后你现在只需要进入游戏就可以实时配置你的效果。<br>配置教程请继续往下阅读。</p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>配置对于不懂英文的小伙伴来说有点吃力，但是一般自己拖动一下数据（一定要记住默认数值），随便玩玩还是能理解每一个特效的意义的。</p>
+<h2 id="如何打开配置界面？"><a href="#如何打开配置界面？" class="headerlink" title="如何打开配置界面？"></a>如何打开配置界面？</h2><p>在游戏中按 Shift + F2 即可。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/rkdi8tx.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h2 id="配置教程"><a href="#配置教程" class="headerlink" title="配置教程"></a>配置教程</h2><p>第一次进入会要求你过一遍教程：<br>我们点击这个 <strong>Continue</strong></p>
+<h2 id="配置文件选择器"><a href="#配置文件选择器" class="headerlink" title="配置文件选择器"></a>配置文件选择器</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/9D0BJDX.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>这个选择器是用来选择多个不同的配置文件的，每一个配置文件可以为不同的数值，你也可以将他人的配置文件放在 Elite Dangerous 的根目录。<br>创建配置文件的方法：点击选择器旁边的 <strong>+</strong> 加号；<br>删除配置文件的方法：点击选择器旁边的 <strong>-</strong> 减号。<br>（配置文件的命名只能有标准的英文大小写，数字以及基本符号）<br>Neko在这里就把第一个配置文件命名为basic吧，那么basic的配置文件目录就是：</p>
+<pre><code>G:\SteamLibrary\steamapps\common\Elite Dangerous\Products\elite-dangerous-64\basic.ini
+</code></pre><p>最后点击 <strong>Continue</strong>。</p>
+<h2 id="特效组"><a href="#特效组" class="headerlink" title="特效组"></a>特效组</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/xXgDO86.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>特效组的使用方法很简单，前面的方块是激活/禁用开关，依次就是名字、快捷键绑定栏。<br>如果你想要某个特效，点那个小方块激活即可。<br>如果你想要禁用某个特效，再点一下那个小方块即可。<br>点击 <strong>Continue</strong> 进入到下一个环节。</p>
+<h2 id="变量组"><a href="#变量组" class="headerlink" title="变量组"></a>变量组</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/3gVMsdx.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>变量组就是一个特效的变量组，你可以直接用鼠标拖动这个数值来调整。<br>记得在尝试调整一个变量之前，要记得默认的数值喔~<br>点击 <strong>Finish</strong> 关闭教程。</p>
+<h2 id="教程结束"><a href="#教程结束" class="headerlink" title="教程结束"></a>教程结束</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/NLIYkg7.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>到这里教程就结束啦~</p>
+<h2 id="综合设置"><a href="#综合设置" class="headerlink" title="综合设置"></a>综合设置</h2><p>综合设置的打开方法是工具左上角的 Settings<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/iOzmyAz.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>在这里可以设置一些快捷键，FPS 显示之类的。</p>
+<h1 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h1><h4 id="问：下载失败，即便用了-VPN-还是很慢。为什么"><a href="#问：下载失败，即便用了-VPN-还是很慢。为什么" class="headerlink" title="问：下载失败，即便用了 VPN 还是很慢。为什么"></a>问：下载失败，即便用了 VPN 还是很慢。为什么</h4><p>答：可能是网络状况不太好，如果实在等不及，可以强制关闭 Reshade 安装程序，然后跟随无VPN的教程走：<a href="#如果你没有VPN请跟随这一步">无 VPN 的教程</a></p>
+<h4 id="问：为什么游戏打不开了？（黑屏、闪退）"><a href="#问：为什么游戏打不开了？（黑屏、闪退）" class="headerlink" title="问：为什么游戏打不开了？（黑屏、闪退）"></a>问：为什么游戏打不开了？（黑屏、闪退）</h4><p>答：这样的问题一般不是因为安装出错，是因为电脑硬件不适配。相关问题还是要交给 Reshade 的开发者，如果不知道如何在 GitHub 上提出 Bug 反馈，也可以直接联系 Neko 的邮箱：neko@ayaka.moe。</p>
+<h4 id="问：我不想用-Reshade-了，怎么删除？"><a href="#问：我不想用-Reshade-了，怎么删除？" class="headerlink" title="问：我不想用 Reshade 了，怎么删除？"></a>问：我不想用 Reshade 了，怎么删除？</h4><p>答：把根目录下的 dxgi.dll 删除即可。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-01-18T19:38:22.000Z" itemprop="dateUpdated">2017-01-19 03:38:22</time>
+</span><br>
+
+
+        
+        永久链接：<a href="/2017/01/19/017/" target="_blank" rel="external">https://neko.ayaka.moe/2017/01/19/017/</a><br>你相信命运是可以被改变的吗？
+        
+    </div>
+    
+    <footer>
+        <a href="https://neko.ayaka.moe">
+            <img src="/img/avatar.jpg" alt="Ayaka Neko">
+            Ayaka Neko
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EDFX/" rel="tag">EDFX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Elite-Dangerous/" rel="tag">Elite Dangerous</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Graphic-Post-Effects/" rel="tag">Graphic Post Effects</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reshade/" rel="tag">Reshade</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reshade-3-0/" rel="tag">Reshade 3.0</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%87%E5%8D%97/" rel="tag">指南</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%BB%E9%9D%A2%E5%90%8E%E6%9C%9F%E7%89%B9%E6%95%88/" rel="tag">画面后期特效</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%B2%BE%E8%8B%B1%E5%8D%B1%E9%99%A9/" rel="tag">精英危险</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://neko.ayaka.moe/2017/01/19/017/&title=《Elite Dangerous（精英危险）Reshade 3.0 设置》 — 喵&pic=https://neko.ayaka.moe/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://neko.ayaka.moe/2017/01/19/017/&title=《Elite Dangerous（精英危险）Reshade 3.0 设置》 — 喵&source=Reshade 是 edfx 的依赖程序，如果想要自己配置 Elite Dangerous 的画面/增强 ED 的画面，可以使用 Reshade 自身然后..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://neko.ayaka.moe/2017/01/19/017/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Elite Dangerous（精英危险）Reshade 3.0 设置》 — 喵&url=https://neko.ayaka.moe/2017/01/19/017/&via=https://neko.ayaka.moe" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/07/018/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> 前一页</div>
+        <h4 class="title">Formidine Rift的POI</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/12/06/016/" id="post-next" class="post-nav-link">
+        <div class="tips">后一页 <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">FactoCraft 大纲</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'fanff0324';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+<script src="https://unpkg.com/fanlocker/dist/fanlocker.js"></script>
+<script>
+  let fl = new FanLocker({
+    clientId: '082228580745414',
+    clientSecret: '81214de3ddbd2bac'
+  })
+</script>
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <br>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>全站共有 53.2k 字</span>
+            <span>Ayaka Neko &copy; 2013 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://neko.ayaka.moe/2017/01/19/017/&title=《Elite Dangerous（精英危险）Reshade 3.0 设置》 — 喵&pic=https://neko.ayaka.moe/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://neko.ayaka.moe/2017/01/19/017/&title=《Elite Dangerous（精英危险）Reshade 3.0 设置》 — 喵&source=Reshade 是 edfx 的依赖程序，如果想要自己配置 Elite Dangerous 的画面/增强 ED 的画面，可以使用 Reshade 自身然后..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://neko.ayaka.moe/2017/01/19/017/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Elite Dangerous（精英危险）Reshade 3.0 设置》 — 喵&url=https://neko.ayaka.moe/2017/01/19/017/&via=https://neko.ayaka.moe" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://neko.ayaka.moe/2017/01/19/017/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '在这里等你回来哦';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎回来呢！';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

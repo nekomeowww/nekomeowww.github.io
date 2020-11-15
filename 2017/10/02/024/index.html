@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>网易云音乐 本地API指南 | 喵 | 欢迎光临喵~</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#EC4E6F">
+    
+    
+    <meta name="keywords" content="Neko,网易云音乐,网易云音乐API,API文档">
+    <meta name="description" content="网易云音乐 history 本地API指南这是一个在项目代码文件中的迷你文档，用于快速帮助开发者定位history文件的键值，详细的文档可以到GitHub的repo上查看www">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网易云音乐 本地API指南">
+<meta property="og:url" content="https://neko.ayaka.moe/2017/10/02/024/index.html">
+<meta property="og:site_name" content="喵">
+<meta property="og:description" content="网易云音乐 history 本地API指南这是一个在项目代码文件中的迷你文档，用于快速帮助开发者定位history文件的键值，详细的文档可以到GitHub的repo上查看www">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-10-02T02:15:00.000Z">
+<meta property="article:modified_time" content="2017-10-02T02:15:00.000Z">
+<meta property="article:author" content="Ayaka Neko">
+<meta property="article:tag" content="Neko">
+<meta property="article:tag" content="网易云音乐">
+<meta property="article:tag" content="网易云音乐API">
+<meta property="article:tag" content="API文档">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="喵" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.jpg">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.png)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Ayaka Neko</h5>
+          <a href="mailto:neko@ayaka.moe" title="neko@ayaka.moe" class="mail">neko@ayaka.moe</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                好多标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                各个分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-heart"></i>
+                关于猫猫
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="mailto:neko@ayaka.moe"  >
+                <i class="icon icon-lg icon-envelope-open"></i>
+                Email 地址
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/nekomeowww" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/ayakaneko" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/id/ayakaneko" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">网易云音乐 本地API指南</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">网易云音乐 本地API指南</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-10-02T02:15:00.000Z" itemprop="datePublished" class="page-time">
+  2017-10-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Guide/">Guide</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#网易云音乐-history-本地API指南"><span class="post-toc-number">1.</span> <span class="post-toc-text">网易云音乐 history 本地API指南</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#备注部分"><span class="post-toc-number">2.</span> <span class="post-toc-text">备注部分</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#href的值"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">href的值</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-024"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">网易云音乐 本地API指南</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-02 10:15:00" datetime="2017-10-02T02:15:00.000Z"  itemprop="datePublished">2017-10-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Guide/">Guide</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            <br>
+            <br>
+            共有字数 3k 字 | 阅读时间 11 分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="网易云音乐-history-本地API指南"><a href="#网易云音乐-history-本地API指南" class="headerlink" title="网易云音乐 history 本地API指南"></a>网易云音乐 history 本地API指南</h1><p>这是一个在项目代码文件中的迷你文档，用于快速帮助开发者定位history文件的键值，详细的文档可以到GitHub的repo上查看www</p>
+ <a id="more"></a>
+<ul>
+<li>fm                                私人FM的fm判定值，true即为此项来自私人FM，不存在即不来自私人FM</li>
+<li>data                              不明数据，在不同模式下会有不同值，示例值：34799039，dailyrecommend</li>
+<li>fid                               不明数据，fid，在正常播放模式下会有值</li>
+<li>id                                私人FM的ID，在非私人FM模式下，此处有一个长ID，字符串</li>
+<li><p>track                             track列，一个键值列表，其中包含曲目的详细数据</p>
+<ul>
+<li>name                           曲目名字</li>
+<li>id                             曲目ID</li>
+<li>position                       曲目在专辑中的曲目号，同<code>track.no</code></li>
+<li>alias                          一个数组，曲目别名</li>
+<li>status                         不明数据</li>
+<li>fee                            费用，数字</li>
+<li>copyrightId                    不明数据，版权ID</li>
+<li>disc                           专辑碟号</li>
+<li>no                             曲目在专辑中的曲目号，同track.postion</li>
+<li>artists                        artists数组，一个数组，其中包含了此曲目的作曲家<ul>
+<li>name                        艺术家名字</li>
+<li>id                          艺术家ID</li>
+<li>picId                       艺术家图片ID</li>
+<li>img1v1Id                    不明数据，数字，同picId</li>
+<li>briefDesc                   不明数据</li>
+<li>picUrl                      艺术家图片链接</li>
+<li>img1v1Url                   不明数据，链接，同picUrl</li>
+<li>albumSize                   不明数据，专辑大小</li>
+<li>alias                       不明数据，可作为别名列表</li>
+<li>trans                       不明数据</li>
+<li>tns                         不明数据</li>
+<li>musicSize                   不明数据</li>
+<li>userId                      用户ID，网易音乐人ID</li>
+</ul>
+</li>
+<li><p>album                          album列，一个键值列表，其中包含专辑的信息</p>
+<ul>
+<li>id                          专辑ID</li>
+<li>name                        专辑名字</li>
+<li>picId                       专辑图片ID</li>
+<li>picUrl                      专辑图片链接</li>
+<li>alias                       不明数据，可作为别名列表</li>
+<li>transNames                  别名</li>
+<li>type                        类型，一般值为 “专辑”</li>
+<li>size                        专辑曲目数量</li>
+<li>blurPicUrl                  模糊图片链接，一般值同picUrl</li>
+<li>companyId                   专辑发布公司ID</li>
+<li>pic                         图片，一个数字，同picId</li>
+<li>publishTime                 发布日期（此项值需要转换，示例值：1490716800000）</li>
+<li>description                 专辑简介，这个值在客户端无法获取</li>
+<li>tags                        标签</li>
+<li>company                     专辑发行公司</li>
+<li>breifDesc                   不明数据</li>
+<li>artist                      专辑艺术家<ul>
+<li>name                     （初始化值）艺术家名字</li>
+<li>id                       （初始化值）艺术家ID</li>
+<li>picId                    （初始化值）艺术家图片ID</li>
+<li>img1v1Id                 （初始化值）不明数据</li>
+<li>briefDesc                （初始化值）不明数据</li>
+<li>picUrl                   艺术家图片链接</li>
+<li>img1v1Url                不明数据，一般值同picUrl</li>
+<li>albumSize                （初始化值）不明数据，专辑大小</li>
+<li>alias                    （初始化值）不明数据，可作为别名列表</li>
+<li>trans                    （初始化值）不明数据</li>
+<li>tns                      （初始化值）不明数据</li>
+<li>musicSize                （初始化值）不明数据</li>
+<li>songs                    数组</li>
+</ul>
+</li>
+<li>commentThreadId               评论区ID，字符串</li>
+<li>mvid                          MV的ID，数字</li>
+<li>cd                            专辑碟号，该曲目所在的专辑单碟编号，数字</li>
+<li>starred                       喜欢的判定值，判定用户是否喜欢过该曲目</li>
+<li>popularity                    热度，数字</li>
+<li>score                         分数，数字</li>
+<li>starredNum                    不明数据，喜欢的数目</li>
+<li>duration                      曲目长度</li>
+<li>playedNum                     播放次数</li>
+<li>ringtone                      不明数据，客户端均衡器用</li>
+<li>rtUrl                         不明数据</li>
+<li>rtUrls                        不明数据，数组</li>
+<li>pstatus                       不明数据</li>
+<li>fee                           费用，数字</li>
+<li>version                       版本号，曲目信息版本</li>
+<li>songType                      曲目类型</li>
+<li>mst                           不明数据</li>
+<li>ftype                         不明数据</li>
+<li>yunSong                       不明数据</li>
+<li>mp3Url                        MP3文件链接</li>
+<li>reason                        推荐原因，不同于recommendReason，这个仅在每日推荐列表播放下可见</li>
+<li>bMusic                        不明数据，一个键值列表，未知品质<ul>
+<li>name                       名字</li>
+<li>id                         品质ID</li>
+<li>size                       文件大小</li>
+<li>extension                  文件扩展名</li>
+<li>sr                         采样率</li>
+<li>playTime                   长度</li>
+<li>dfsId_str                  不明数据</li>
+<li>bitrate                    比特率，此品质未知</li>
+<li>dfsId                      不明数据，数字</li>
+<li>size                       文件大小，字节作为单位，byte，数字</li>
+<li>volumeDelta                音量Delta值，浮点型</li>
+</ul>
+</li>
+<li>hMusic                        高品质音乐，一个键值列表<ul>
+<li>name                       名字</li>
+<li>id                         品质ID</li>
+<li>size                       文件大小</li>
+<li>extension                  文件扩展名</li>
+<li>sr                         采样率</li>
+<li>playTime                   长度</li>
+<li>dfsId_str                  不明数据</li>
+<li>bitrate                    比特率，高品质为320000</li>
+<li>dfsId                      不明数据，数字</li>
+<li>size                       文件大小，字节作为单位，byte，数字</li>
+<li>volumeDelta                音量Delta值，浮点型</li>
+</ul>
+</li>
+<li>mMusic                        中品质音乐，一个键值列表<ul>
+<li>name                       名字</li>
+<li>id                         品质ID</li>
+<li>size                       文件大小</li>
+<li>extension                  文件扩展名</li>
+<li>sr                         采样率</li>
+<li>playTime                   长度</li>
+<li>dfsId_str                  不明数据</li>
+<li>bitrate                    比特率，中品质为160000</li>
+<li>dfsId                      不明数据，数字</li>
+<li>size                       文件大小，字节作为单位，byte，数字</li>
+<li>volumeDelta                音量Delta值，浮点型</li>
+</ul>
+</li>
+<li>lMusic                        低品质音乐，一个键值列表<ul>
+<li>name                       名字</li>
+<li>id                         品质ID</li>
+<li>size                       文件大小</li>
+<li>extension                  文件扩展名</li>
+<li>sr                         采样率</li>
+<li>playTime                   长度</li>
+<li>dfsId_str                  不明数据</li>
+<li>bitrate                    比特率，低品质为96000</li>
+<li>dfsId                      不明数据，数字</li>
+<li>size                       文件大小，字节作为单位，byte，数字</li>
+<li>volumeDelta                音量Delta值，浮点型</li>
+</ul>
+</li>
+<li>privilege                     权限<ul>
+<li>id                         ID值，同曲目ID</li>
+<li>version                    版本号，测试时获得的值是：0-0-0-999-999-999-320-7-1-1-0</li>
+<li>fee                        费用，数字</li>
+<li>payed                      已支付次数，数字</li>
+<li>status                     不明数据</li>
+<li>maxPlayBr                  最大的可播放比特率</li>
+<li>maxDownBr                  最大的可下载比特率</li>
+<li>maxSongBr                  最大的曲目比特率</li>
+<li>maxFreeBr                  最大的免费比特率</li>
+<li>sharePriv                  分享权限，数字</li>
+<li>commentPriv                评论权限，数字</li>
+<li>subPriv                    不明数据，子权限，数字</li>
+<li>cloudSong                  不明数据，云音乐，数字</li>
+<li>toast                      不明数据，此处测试时为false</li>
+</ul>
+</li>
+<li>copyFrom                      不明数据，字符串</li>
+<li>audition                      不明数据，空值</li>
+<li>rtype                         不明数据，数字</li>
+<li>rurl                          不明数据，空值</li>
+<li>recommendReason               推荐原因，字符串</li>
+<li>alg                           不明数据</li>
+<li>commentCount                  评论数统计，数字</li>
+<li>copyright                     不明数据，版权，数字</li>
+<li>lrcAbstractEnd                不明数据，歌词抽象结束</li>
+<li>lrcAbstractStart              不明数据，歌词抽象开始</li>
+<li>indexId                       不明数据，索引ID，数字</li>
+<li>haslyric                      是否有歌词的判定值，判定是否有歌词       </li>
+</ul>
+<ul>
+<li>tid                             不明数据，同id</li>
+<li>radio                           电台，一个键值列表，不太详细的列表<ul>
+<li>dj                            DJ的名字，此处为null</li>
+<li>category                      分类，字符串</li>
+<li>buyed                         购买的判定值，这里指的应该是订阅与否</li>
+<li>price                         价格，此处无效</li>
+<li>originalPrice                 原始价格，此处无效</li>
+<li>discountPrice                 打折价格，此处无效</li>
+<li>purchaseCount                 购买人数，数字</li>
+<li>lastProgramName               最后更新的节目名字</li>
+<li>videos                        视频，此处空值</li>
+<li>finished                      不明数据，结束的判断值</li>
+<li>underShelf                    不明数据</li>
+<li>picUrl                        电台图片链接</li>
+<li>picId                         电台图片ID</li>
+<li>categoryId                    分类ID</li>
+<li>lastProgramId                 最后更新的节目ID</li>
+<li>createTime                    创建时间</li>
+<li>feeScope                      不明数据</li>
+<li>programCount                  项目统计数</li>
+<li>subCount                      订阅人数统计</li>
+<li>desc                          介绍，字符串</li>
+<li>lastProgramCreateTime         最后更新的节目创建时间</li>
+<li>radioFeeType                  电台费用类型</li>
+<li>name                          电台名字</li>
+<li>id                            电台ID</li>
+<li>subed                         订阅的判定值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>program                          节目，一个键值列表，仅在电台条目下可用<ul>
+<li>mainSong                      不明数据，主要曲目，一个值，示例值：411421177</li>
+<li>songs                         曲目数，空值</li>
+<li>dj                            DJ，一个键值列表，详细的电台主播信息<ul>
+<li>defaultAvatar              默认头像的判定值</li>
+<li>province                   不明数据，省份</li>
+<li>authStatus                 认证状态，数字</li>
+<li>followed                   关注的判定值</li>
+<li>avatarUrl                  头像链接</li>
+<li>accountStatus              账号状态，注销账号的值为30</li>
+<li>gender                     性别，女性为2</li>
+<li>city                       不明数据，城市，数字</li>
+<li>birthday                   出生日期，数字</li>
+<li>userId                     用户ID，数字</li>
+<li>userType                   用户类型，数字</li>
+<li>nickname                   用户名，字符串</li>
+<li>signature                  个性签名</li>
+<li>description                自我介绍</li>
+<li>detailDescription          详细的自我介绍</li>
+<li>avatarImgId                头像图片ID，数字</li>
+<li>backgroundImgId            背景图片ID，数字</li>
+<li>backgroundUrl              背景图片链接</li>
+<li>authority                  不明数据，许可机构</li>
+<li>mutual                     不明数据，判定值</li>
+<li>expertTags                 用户徽章，比如音乐达人</li>
+<li>experts                    徽章</li>
+<li>djStatus                   主播状态</li>
+<li>vipType                    VIP类型</li>
+<li>remarkName                 额外名字</li>
+<li>avatarImgIdStr             头像图片ID，字符串</li>
+<li>backgroundImgIdStr         背景图片ID，字符串</li>
+<li>avatarImgId_str            头像图片ID，字符串</li>
+<li>brand                      不明数据</li>
+</ul>
+</li>
+<li>blurCoverUrl                  模糊的封面链接</li>
+<li>radio                         电台，一个键值列表，简要的信息<ul>
+<li>dj                         DJ的名字，字符串<ul>
+<li>defaultAvatar           默认头像的判定值</li>
+<li>province                不明数据，省份</li>
+<li>authStatus              认证状态，数字</li>
+<li>followed                关注的判定值</li>
+<li>avatarUrl               头像链接</li>
+<li>accountStatus           账号状态，注销账号的值为30</li>
+<li>gender                  性别，女性为2</li>
+<li>city                    不明数据，城市，数字</li>
+<li>birthday                出生日期，数字</li>
+<li>userId                  用户ID，数字</li>
+<li>userType                用户类型，数字</li>
+<li>nickname                用户名，字符串</li>
+<li>signature               个性签名</li>
+<li>description             自我介绍</li>
+<li>detailDescription       详细的自我介绍</li>
+<li>avatarImgId             头像图片ID，数字</li>
+<li>backgroundImgId         背景图片ID，数字</li>
+<li>backgroundUrl           背景图片链接</li>
+<li>authority               不明数据，许可机构</li>
+<li>mutual                  不明数据，判定值</li>
+<li>expertTags              用户徽章，比如音乐达人</li>
+<li>experts                 徽章</li>
+<li>djStatus                主播状态</li>
+<li>vipType                 VIP类型</li>
+<li>remarkName              额外名字</li>
+<li>avatarImgIdStr          头像图片ID，字符串</li>
+<li>backgroundImgIdStr      背景图片ID，字符串</li>
+<li>avatarImgId_str         头像图片ID，字符串</li>
+<li>brand                   不明数据</li>
+<li>canReward               打赏的判定值</li>
+<li>rewardCount             打赏数目统计</li>
+</ul>
+</li>
+<li>category                   分类，字符串</li>
+<li>buyed                      购买的判定值，这里指的应该是订阅与否</li>
+<li>price                      价格，此处无效</li>
+<li>originalPrice              原始价格，此处无效</li>
+<li>discountPrice              打折价格，此处无效</li>
+<li>purchaseCount              购买人数，数字</li>
+<li>lastProgramName            最后更新的节目名字</li>
+<li>videos                     视频，此处空值</li>
+<li>finished                   不明数据，结束的判断值</li>
+<li>underShelf                 不明数据</li>
+<li>picUrl                     电台图片链接</li>
+<li>picId                      电台图片ID</li>
+<li>categoryId                 分类ID</li>
+<li>lastProgramId              最后更新的节目ID</li>
+<li>createTime                 创建时间</li>
+<li>feeScope                   不明数据</li>
+<li>programCount               节目统计数</li>
+<li>subCount                   订阅人数统计</li>
+<li>desc                       介绍，字符串</li>
+<li>lastProgramCreateTime      最后更新的节目创建时间</li>
+<li>radioFeeType               电台费用类型</li>
+<li>name                       电台名字</li>
+<li>id                         电台ID</li>
+<li>subed                      订阅的判定值</li>
+<li>rcmdtext                   不明数据，空值，字符串</li>
+<li>newProgramCount            新的节目数目统计</li>
+<li>rcmdText                   不明数据，空值，字符串</li>
+<li>composeVideo               创作视频的判定值</li>
+<li>shareCount                 分享次数统计</li>
+<li>likedCount                 喜欢次数统计</li>
+<li>commentDatas               评论数据，一个键值列表<ul>
+<li>userProfile             用户资料，一个键值列表<ul>
+<li>defaultAvatar        默认头像的判定值</li>
+<li>province             不明数据，省份</li>
+<li>authStatus           认证状态，数字</li>
+<li>followed             关注的判定值</li>
+<li>avatarUrl            头像链接</li>
+<li>accountStatus        账号状态，注销账号的值为30</li>
+<li>gender               性别，女性为2</li>
+<li>city                 不明数据，城市，数字</li>
+<li>birthday             出生日期，数字</li>
+<li>userId               用户ID，数字</li>
+<li>userType             用户类型，数字</li>
+<li>nickname             用户名，字符串</li>
+<li>signature            个性签名</li>
+<li>description          自我介绍</li>
+<li>detailDescription    详细的自我介绍</li>
+<li>avatarImgId          头像图片ID，数字</li>
+<li>backgroundImgId      背景图片ID，数字</li>
+<li>backgroundUrl        背景图片链接</li>
+<li>authority            不明数据，许可机构</li>
+<li>mutual               不明数据，判定值</li>
+<li>expertTags           用户徽章，比如音乐达人</li>
+<li>experts              徽章</li>
+<li>djStatus             主播状态</li>
+<li>vipType              VIP类型</li>
+<li>remarkName           额外名字</li>
+<li>avatarImgIdStr       头像图片ID，字符串</li>
+<li>backgroundImgIdStr   背景图片ID，字符串</li>
+</ul>
+</li>
+<li>content                 评论内容</li>
+<li>programName             节目名称</li>
+<li>programId               节目ID</li>
+<li>commentId               评论ID</li>
+</ul>
+</li>
+<li>commentCount               评论计数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>radio                            电台，一个键值列表，不太详细的列表<ul>
+<li>dj                            DJ的名字，此处为null</li>
+<li>category                      分类，字符串</li>
+<li>buyed                         购买的判定值，这里指的应该是订阅与否</li>
+<li>price                         价格，此处无效</li>
+<li>originalPrice                 原始价格，此处无效</li>
+<li>discountPrice                 打折价格，此处无效</li>
+<li>purchaseCount                 购买人数，数字</li>
+<li>lastProgramName               最后更新的节目名字</li>
+<li>videos                        视频，此处空值</li>
+<li>finished                      不明数据，结束的判断值</li>
+<li>underShelf                    不明数据</li>
+<li>picUrl                        电台图片链接</li>
+<li>picId                         电台图片ID</li>
+<li>categoryId                    分类ID</li>
+<li>lastProgramId                 最后更新的节目ID</li>
+<li>createTime                    创建时间</li>
+<li>feeScope                      不明数据</li>
+<li>programCount                  项目统计数</li>
+<li>subCount                      订阅人数统计</li>
+<li>desc                          介绍，字符串</li>
+<li>lastProgramCreateTime         最后更新的节目创建时间</li>
+<li>radioFeeType                  电台费用类型</li>
+<li>name                          电台名字</li>
+<li>id                            电台ID</li>
+<li>subed                         订阅的判定值</li>
+<li>href                          来源链接，字符串，专辑链接；私人FM播放模式示例值：/m/fm/?fromSource=1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>text                             来源，多种可能性</li>
+<li>nickName                         来源作者，比如歌单作者</li>
+<li>userId                           作者ID</li>
+<li>startlogtime                     不明数据，数字</li>
+<li>loaderr                          加载错误的判定值</li>
+<li>playedTime                       播放次数，数字</li>
+<li>playType                         播放类型</li>
+<li>playBrt                          正在播放的比特率</li>
+<li>playFile                         本地文件所在位置</li>
+<li>lrctype                          歌词类型，online</li>
+<li>lrcid                            歌词ID</li>
+<li>qid                              不明数据，示例值：4937714_2_493807</li>
+<li>time                             时间，数字    </li>
+</ul>
+<h1 id="备注部分"><a href="#备注部分" class="headerlink" title="备注部分"></a>备注部分</h1><h3 id="href的值"><a href="#href的值" class="headerlink" title="href的值"></a>href的值</h3><p>在专辑播放模式下：<code>/m/album/?id=3428149&amp;rid=R_AL_3_3428149&amp;fromSource=1</code><br>在私人FM播放模式下：<code>/m/fm</code><br>在电台播放模式下：<code>/m/djradio/?id=828002&amp;fromSource=1</code><br>在每日推荐模式下：<code>/m/dailysong/?fromSource=1</code><br>在搜索页下：<code>/m/search/?type=1&amp;s=Kaine%20%2F%20Salvation&amp;fromSource=1</code><br>歌单：<code>/m/playlist/?id=894355338&amp;rid=A_PL_0_894355338&amp;fromSource=1</code>    </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-10-02T02:15:00.000Z" itemprop="dateUpdated">2017-10-02 10:15:00</time>
+</span><br>
+
+
+        
+        永久链接：<a href="/2017/10/02/024/" target="_blank" rel="external">https://neko.ayaka.moe/2017/10/02/024/</a><br>你相信命运是可以被改变的吗？
+        
+    </div>
+    
+    <footer>
+        <a href="https://neko.ayaka.moe">
+            <img src="/img/avatar.jpg" alt="Ayaka Neko">
+            Ayaka Neko
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API%E6%96%87%E6%A1%A3/" rel="tag">API文档</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Neko/" rel="tag">Neko</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/" rel="tag">网易云音乐</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90API/" rel="tag">网易云音乐API</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://neko.ayaka.moe/2017/10/02/024/&title=《网易云音乐 本地API指南》 — 喵&pic=https://neko.ayaka.moe/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://neko.ayaka.moe/2017/10/02/024/&title=《网易云音乐 本地API指南》 — 喵&source=网易云音乐 history 本地API指南这是一个在项目代码文件中的迷你文档，用于快速帮助开发者定位history文件的键值，详细的文档可以到GitHub..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://neko.ayaka.moe/2017/10/02/024/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《网易云音乐 本地API指南》 — 喵&url=https://neko.ayaka.moe/2017/10/02/024/&via=https://neko.ayaka.moe" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/12/28/019/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> 前一页</div>
+        <h4 class="title">想要变成猫</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/07/018/" id="post-next" class="post-nav-link">
+        <div class="tips">后一页 <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Formidine Rift的POI</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'fanff0324';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+<script src="https://unpkg.com/fanlocker/dist/fanlocker.js"></script>
+<script>
+  let fl = new FanLocker({
+    clientId: '082228580745414',
+    clientSecret: '81214de3ddbd2bac'
+  })
+</script>
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <br>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>全站共有 53.2k 字</span>
+            <span>Ayaka Neko &copy; 2013 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://neko.ayaka.moe/2017/10/02/024/&title=《网易云音乐 本地API指南》 — 喵&pic=https://neko.ayaka.moe/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://neko.ayaka.moe/2017/10/02/024/&title=《网易云音乐 本地API指南》 — 喵&source=网易云音乐 history 本地API指南这是一个在项目代码文件中的迷你文档，用于快速帮助开发者定位history文件的键值，详细的文档可以到GitHub..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://neko.ayaka.moe/2017/10/02/024/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《网易云音乐 本地API指南》 — 喵&url=https://neko.ayaka.moe/2017/10/02/024/&via=https://neko.ayaka.moe" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://neko.ayaka.moe/2017/10/02/024/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '在这里等你回来哦';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎回来呢！';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

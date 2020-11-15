@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>FactoCraft 大纲 | 喵 | 欢迎光临喵~</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#EC4E6F">
+    
+    
+    <meta name="keywords" content="FactoCraft,Factorio,Forge,Java,Minecraft,Mod,笔记,编程">
+    <meta name="description" content="这是一个想要把Factorio立体化（所以选择了Minecraft）的Mod，目前名称是FactoCraft Mod，更多更新信息可以查看GitHub托管库这是一篇没有完成的大纲,如果有什么意见和建议，可以在下面的Disqus中回复，neko会尽快回复的www">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FactoCraft 大纲">
+<meta property="og:url" content="https://neko.ayaka.moe/2016/12/06/016/index.html">
+<meta property="og:site_name" content="喵">
+<meta property="og:description" content="这是一个想要把Factorio立体化（所以选择了Minecraft）的Mod，目前名称是FactoCraft Mod，更多更新信息可以查看GitHub托管库这是一篇没有完成的大纲,如果有什么意见和建议，可以在下面的Disqus中回复，neko会尽快回复的www">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-12-06T00:38:22.000Z">
+<meta property="article:modified_time" content="2016-12-06T00:38:22.000Z">
+<meta property="article:author" content="Ayaka Neko">
+<meta property="article:tag" content="FactoCraft">
+<meta property="article:tag" content="Factorio">
+<meta property="article:tag" content="Forge">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Minecraft">
+<meta property="article:tag" content="Mod">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="编程">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="喵" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.jpg">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.png)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Ayaka Neko</h5>
+          <a href="mailto:neko@ayaka.moe" title="neko@ayaka.moe" class="mail">neko@ayaka.moe</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                好多标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                各个分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-heart"></i>
+                关于猫猫
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="mailto:neko@ayaka.moe"  >
+                <i class="icon icon-lg icon-envelope-open"></i>
+                Email 地址
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/nekomeowww" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/ayakaneko" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/id/ayakaneko" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">FactoCraft 大纲</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">FactoCraft 大纲</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-12-06T00:38:22.000Z" itemprop="datePublished" class="page-time">
+  2016-12-06
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Thoughts/">Thoughts</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#调整"><span class="post-toc-number">1.</span> <span class="post-toc-text">调整</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#矿物调整"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">矿物调整</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#物品调整"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">物品调整</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#物流"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">物流</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#传送带"><span class="post-toc-number">1.2.1.1.</span> <span class="post-toc-text">传送带</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#机械臂"><span class="post-toc-number">1.2.1.2.</span> <span class="post-toc-text">机械臂</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#生产调整"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">生产调整</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#科技树调整"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">科技树调整</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#更新信息"><span class="post-toc-number">2.</span> <span class="post-toc-text">更新信息</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-016"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">FactoCraft 大纲</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016-12-06 08:38:22" datetime="2016-12-06T00:38:22.000Z"  itemprop="datePublished">2016-12-06</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Thoughts/">Thoughts</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            <br>
+            <br>
+            共有字数 516 字 | 阅读时间 1 分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>这是一个想要把Factorio立体化（所以选择了Minecraft）的Mod，目前名称是FactoCraft Mod，更多更新信息可以查看GitHub托管库<br>这是一篇没有完成的大纲,<br>如果有什么意见和建议，可以在下面的Disqus中回复，neko会尽快回复的www</p>
+<a id="more"></a>
+<h1 id="调整"><a href="#调整" class="headerlink" title="调整"></a>调整</h1><h2 id="矿物调整"><a href="#矿物调整" class="headerlink" title="矿物调整"></a>矿物调整</h2><p>是否添加部分bob mod的内容？<br>是否提升矿物的生成？<br>是否有办法可以提升矿物副产品产量？</p>
+<h2 id="物品调整"><a href="#物品调整" class="headerlink" title="物品调整"></a>物品调整</h2><h3 id="物流"><a href="#物流" class="headerlink" title="物流"></a>物流</h3><h4 id="传送带"><a href="#传送带" class="headerlink" title="传送带"></a>传送带</h4><p>在Minecraft世界里面地形是 有高有低 的，但是在Factorio的世界里面，整个地形都是平整的，但是neko考虑了一下，可以用这个方案来解决这个问题：</p>
+<p>在基本科技树中提供：基本传送带以及基础阶梯传送带（类似火车轨道）；<br>在高级科技树中提供：整地/平整地形工具（也可以包括在无人机拆除系统中提供），基础科技树的时候就使用阶梯传送带。<br>至于是否采用，只能看alpha版本的实际作用，当然可以后期更改，不是最终产品。<br>关于地下传送带，两种方案：同一高度只能存在同一范围内同一个方向的地下传送带；亦或是同一方向同一范围内，无论高度如何，只能同时存在一条地下传送带。</p>
+<h4 id="机械臂"><a href="#机械臂" class="headerlink" title="机械臂"></a>机械臂</h4><p>针对地形问题，在上面的机械臂里面也有提到过，如果传送带是可以悬空的，那么机械臂怎么抓取上面的东西？特别是<a href="####传送带">阶梯传送带</a> ：</p>
+<ol>
+<li>允许机械臂抓取斜放的阶梯传送带；</li>
+<li>允许机械臂直接放置在传送带附近的一格方块区域内。</li>
+</ol>
+<h2 id="生产调整"><a href="#生产调整" class="headerlink" title="生产调整"></a>生产调整</h2><p>是否遵循Factorio原本的生产配方？</p>
+<h2 id="科技树调整"><a href="#科技树调整" class="headerlink" title="科技树调整"></a>科技树调整</h2><p>在物流中提到过。</p>
+<h1 id="更新信息"><a href="#更新信息" class="headerlink" title="更新信息"></a>更新信息</h1><p>2016年12月07日<br>第一次在GitHub的commit<br><a href="https://github.com/factocraft/factocraft-mod/commit/4b869d48b5f1104cbc12833367f47d151ac21db4" target="_blank" rel="noopener">commit -4b869d4-</a></p>
+<p>如果有什么意见和建议的话，可以在下面的Disqus中回复www</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2016-12-06T00:38:22.000Z" itemprop="dateUpdated">2016-12-06 08:38:22</time>
+</span><br>
+
+
+        
+        永久链接：<a href="/2016/12/06/016/" target="_blank" rel="external">https://neko.ayaka.moe/2016/12/06/016/</a><br>你相信命运是可以被改变的吗？
+        
+    </div>
+    
+    <footer>
+        <a href="https://neko.ayaka.moe">
+            <img src="/img/avatar.jpg" alt="Ayaka Neko">
+            Ayaka Neko
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FactoCraft/" rel="tag">FactoCraft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Factorio/" rel="tag">Factorio</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Forge/" rel="tag">Forge</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Minecraft/" rel="tag">Minecraft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mod/" rel="tag">Mod</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://neko.ayaka.moe/2016/12/06/016/&title=《FactoCraft 大纲》 — 喵&pic=https://neko.ayaka.moe/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://neko.ayaka.moe/2016/12/06/016/&title=《FactoCraft 大纲》 — 喵&source=这是一个想要把Factorio立体化（所以选择了Minecraft）的Mod，目前名称是FactoCraft Mod，更多更新信息可以查看GitHub托管..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://neko.ayaka.moe/2016/12/06/016/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《FactoCraft 大纲》 — 喵&url=https://neko.ayaka.moe/2016/12/06/016/&via=https://neko.ayaka.moe" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/01/19/017/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> 前一页</div>
+        <h4 class="title">Elite Dangerous（精英危险）Reshade 3.0 设置</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/09/23/015/" id="post-next" class="post-nav-link">
+        <div class="tips">后一页 <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">就个人对 LGBT 的观点</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'fanff0324';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+<script src="https://unpkg.com/fanlocker/dist/fanlocker.js"></script>
+<script>
+  let fl = new FanLocker({
+    clientId: '082228580745414',
+    clientSecret: '81214de3ddbd2bac'
+  })
+</script>
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <br>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>全站共有 53.2k 字</span>
+            <span>Ayaka Neko &copy; 2013 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://neko.ayaka.moe/2016/12/06/016/&title=《FactoCraft 大纲》 — 喵&pic=https://neko.ayaka.moe/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://neko.ayaka.moe/2016/12/06/016/&title=《FactoCraft 大纲》 — 喵&source=这是一个想要把Factorio立体化（所以选择了Minecraft）的Mod，目前名称是FactoCraft Mod，更多更新信息可以查看GitHub托管..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://neko.ayaka.moe/2016/12/06/016/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《FactoCraft 大纲》 — 喵&url=https://neko.ayaka.moe/2016/12/06/016/&via=https://neko.ayaka.moe" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://neko.ayaka.moe/2016/12/06/016/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '在这里等你回来哦';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎回来呢！';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

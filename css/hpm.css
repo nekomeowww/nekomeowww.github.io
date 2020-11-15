@@ -1,0 +1,113 @@
+.hpm-input-container {
+    width: 80%;
+    max-width: 800px;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -ms-flex-flow: column-reverse;
+    flex-flow: column-reverse;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    margin: 50px auto;
+}
+.message {
+    transition: all 0.3s;
+}
+.message {
+    font-size: 18px;
+    color: #3f4f5b;
+}
+
+.hpm-button {
+    width: 130px;
+    height: 40px;
+    background: #333333;
+    border: none;
+    border-radius: 5px;
+    position: relative;
+    color: #fbfbfb;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+.hpm-button:active {
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.2);
+    outline: none;
+    top: 1px;
+}
+
+.hpm-button:after {
+    outline: none;
+    content: '';
+    width: 0;
+    height: 0;
+    display: block;
+    position: absolute;
+    opacity: 0.6;
+    right: 0;
+    top: 0;
+}
+
+.hpm-avatar {
+    height: 36px;
+    width: 36px;
+    object-fit: cover;
+    margin-right: 1rem !important;
+}
+
+.symbol-line {
+    order: 100;
+    display: flex;
+    align-items: center;
+}
+
+.purple {
+    color: #542de0;
+}
+
+#login-btn {
+    background-color: #542de0;
+    color: #fff;
+    border-color: #542de0;
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid #dcdfe6;
+    text-align: center;
+    box-sizing: border-box;
+    outline: 0;
+    margin: 0;
+    font-weight: 400;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+#unlock-btn {
+    display: none;
+    background-color: #542de0;
+    color: #fff;
+    border-color: #542de0;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid #dcdfe6;
+    text-align: center;
+    box-sizing: border-box;
+    outline: 0;
+    margin: 0;
+    font-weight: 400;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+}

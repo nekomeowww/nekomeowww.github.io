@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Hexo 和 hexo-plugin-matataki 的使用和开发后记 | 喵 | 欢迎光临喵~</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#EC4E6F">
+    
+    
+    <meta name="keywords" content="指南,Hexo,GitHub Blog,Matataki,Fan票">
+    <meta name="description" content="前言有幸在加入仙女座星系之后能够给大家开发这么一个好用的站外工具和插件，当然这也少不了很多人的帮助和支持。 最先要提到的肯定是 hexo-blog-encrypt 的作者 MikeCoder 和其他所有对这个加密插件项目的贡献者（贡献者列表：https:&#x2F;&#x2F;github.com&#x2F;MikeCoder&#x2F;hexo-blog-encrypt&#x2F;graphs&#x2F;contributors ，如果没有他们首先开发出">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 和 hexo-plugin-matataki 的使用和开发后记">
+<meta property="og:url" content="https://neko.ayaka.moe/2020/08/25/042/index.html">
+<meta property="og:site_name" content="喵">
+<meta property="og:description" content="前言有幸在加入仙女座星系之后能够给大家开发这么一个好用的站外工具和插件，当然这也少不了很多人的帮助和支持。 最先要提到的肯定是 hexo-blog-encrypt 的作者 MikeCoder 和其他所有对这个加密插件项目的贡献者（贡献者列表：https:&#x2F;&#x2F;github.com&#x2F;MikeCoder&#x2F;hexo-blog-encrypt&#x2F;graphs&#x2F;contributors ，如果没有他们首先开发出">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/08/25/vIMygeKr38C7iYm.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/25/XC5mK3Q4AlybIUr.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/25/W2vgCyaXA8MkpRl.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/26/mBogLpwXsv4Va7y.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/26/TcqiCjzVtmL1p7B.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/26/pdH2PC3oSlecAOM.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/25/TFGgx13rOV5EdzI.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/25/9vwtiMkgTrAG17U.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/25/YpvmAQjPTlL5a7c.png">
+<meta property="article:published_time" content="2020-08-25T06:05:03.000Z">
+<meta property="article:modified_time" content="2020-08-25T06:05:03.000Z">
+<meta property="article:author" content="Ayaka Neko">
+<meta property="article:tag" content="指南">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="GitHub Blog">
+<meta property="article:tag" content="Matataki">
+<meta property="article:tag" content="Fan票">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/08/25/vIMygeKr38C7iYm.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="喵" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.jpg">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.png)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Ayaka Neko</h5>
+          <a href="mailto:neko@ayaka.moe" title="neko@ayaka.moe" class="mail">neko@ayaka.moe</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                好多标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                各个分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-heart"></i>
+                关于猫猫
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="mailto:neko@ayaka.moe"  >
+                <i class="icon icon-lg icon-envelope-open"></i>
+                Email 地址
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/nekomeowww" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/ayakaneko" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/id/ayakaneko" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Hexo 和 hexo-plugin-matataki 的使用和开发后记</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Hexo 和 hexo-plugin-matataki 的使用和开发后记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-08-25T06:05:03.000Z" itemprop="datePublished" class="page-time">
+  2020-08-25
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Guide/">Guide</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#从哪里开始呢？"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">从哪里开始呢？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建属于博客的-App"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">创建属于博客的 App</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置-Oauth"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">配置 Oauth</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装-hexo-plugin-matataki"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">安装 hexo-plugin-matataki</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加-FanLocker-脚本"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">添加 FanLocker 脚本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设置密码键值对"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">设置密码键值对</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#要注意的内容"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">要注意的内容</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#发布"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">发布</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#开发"><span class="post-toc-number">3.</span> <span class="post-toc-text">开发</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#怎么做呢？"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">怎么做呢？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#评论模块的启发"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">评论模块的启发</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Gitalk-怎么完成的？"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">Gitalk 怎么完成的？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#我们怎么用？"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">我们怎么用？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开发成两个分离的模块"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">开发成两个分离的模块</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#最后"><span class="post-toc-number">4.</span> <span class="post-toc-text">最后</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#链接"><span class="post-toc-number">5.</span> <span class="post-toc-text">链接</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-042"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Hexo 和 hexo-plugin-matataki 的使用和开发后记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-08-25 14:05:03" datetime="2020-08-25T06:05:03.000Z"  itemprop="datePublished">2020-08-25</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Guide/">Guide</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            <br>
+            <br>
+            共有字数 4.6k 字 | 阅读时间 16 分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>有幸在加入仙女座星系之后能够给大家开发这么一个好用的站外工具和插件，当然这也少不了很多人的帮助和支持。</p>
+<p>最先要提到的肯定是 <a href="https://github.com/MikeCoder/hexo-blog-encrypt" target="_blank" rel="noopener">hexo-blog-encrypt</a> 的作者 <a href="https://github.com/MikeCoder" target="_blank" rel="noopener">MikeCoder</a> 和其他所有对这个加密插件项目的贡献者（贡献者列表：<a href="https://github.com/MikeCoder/hexo-blog-encrypt/graphs/contributors" target="_blank" rel="noopener">https://github.com/MikeCoder/hexo-blog-encrypt/graphs/contributors</a> ，如果没有他们首先开发出这个插件，猫猫在这里也没有什么能做的，虽然在很多方面我学习了很多很多知识，借鉴了很多人很多事物的作品才到今天这一步，也才有了我们即将要介绍的 <a href="https://github.com/nekomeowww/hexo-plugin-matataki" target="_blank" rel="noopener">hexo-plugin-matataki</a> 和 <a href="https://github.com/nekomeowww/fanlocker" target="_blank" rel="noopener">FanLocker</a>，两个作为 Matataki 站外的交互插件和脚本。<br><a id="more"></a></p>
+<p>在这里，再次感谢以下几个项目给我的灵感和源代码支持：</p>
+<ol>
+<li>Gitalk: <a href="https://github.com/gitalk/gitalk" target="_blank" rel="noopener">https://github.com/gitalk/gitalk</a></li>
+<li>Disqus: <a href="https://disqus.com/" target="_blank" rel="noopener">https://disqus.com/</a></li>
+<li>hexo-blog-encrypt: <a href="https://github.com/MikeCoder/hexo-blog-encrypt" target="_blank" rel="noopener">https://github.com/MikeCoder/hexo-blog-encrypt</a></li>
+<li>Hexo: <a href="https://hexo.io/" target="_blank" rel="noopener">https://hexo.io/</a></li>
+<li>utterances: <a href="https://github.com/utterance/utterances" target="_blank" rel="noopener">https://github.com/utterance/utterances</a></li>
+</ol>
+<p>如果没有以上项目的支持，不会有今天的 hexo-plugin-matataki 和 FanLocker</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>上面说的东西不是很多，但是也不是很简单就能完成的，虽然的确是复制了别人好多的代码，但是，我们学习到了怎么去完成和实现才是最重要的不是吗？所以不阅读也没事，我们直接来描述怎么使用这个东西吧！</p>
+<p>事不宜迟，不如先看看效果是什么样子的？看看<a href="https://neko.ayaka.moe/hexo-plugin-matataki-showcase/">演示博客</a>。</p>
+<p>我在我的博客中也展示了如何使用这个插件，<a href="https://neko.ayaka.moe/2020/08/25/041/">试试看解锁这篇文章吧！</a></p>
+<p>我搭建了一个很简单的模版博客，在这个里面你可以看到这个插件完成的具体工作，我也会相应的给出一个 Hexo 博客的配置方案给大家参照去完成魔改。</p>
+<p>如果阅读本文不是很清楚的时候可以参考这个仓库的 Hexo 配置来搭建你的博客：<a href="https://github.com/nekomeowww/hexo-plugin-matataki-example" target="_blank" rel="noopener">基础模版</a></p>
+<h2 id="从哪里开始呢？"><a href="#从哪里开始呢？" class="headerlink" title="从哪里开始呢？"></a>从哪里开始呢？</h2><p>我们最首先要知道的是，在 Hexo 中使用 hexo-plugin-matataki 是需要你在 Matataki 有注册账号，并且绑定过邮箱的，这样才能登录开发者中心，而 hexo-plugin-matataki 和 FanLocker 都是需要开发者中心才能完成他们的工作的。</p>
+<p>首先前往<a href="https://developer.matataki.io" target="_blank" rel="noopener">Matataki 开发者中心</a>，登录之后就可以看到这样的列表：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/25/vIMygeKr38C7iYm.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>在这里就可以管理你的 App（我们称之为 App 是因为你可以使用我们的开发者中心提供的帮助和 API 接口以及 SDK 来完成许多 Matataki 外部应用的开发，当然如果只是写文章的你，不用在乎这些），以及你的团队，还有查阅开发文档。</p>
+<h2 id="创建属于博客的-App"><a href="#创建属于博客的-App" class="headerlink" title="创建属于博客的 App"></a>创建属于博客的 App</h2><p>我们在这里点击新建就可以新建一个属于你的博客的 App：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/25/XC5mK3Q4AlybIUr.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>选择一个好看的图片，因为到时候会用到这个图片，大家会在使用 Matataki 账号登录到你的博客的时候看到这个图标，也可以看到你在这里填写的一切信息。</p>
+<p>要注意这里填写的内容哦，这里填写的时候一定要注意回调链接这一栏，我们的服务器是不允许回调链接配置的时候超出域名范畴的，简单的来说，就是这里写上的域名，以及之后 FanLocker 帮你临时添加回调链接的时候必须是同一个域名，为什么会这样去限制呢？因为我们认为，FanLocker 把你的 client Id 和 client Secret 暴露在网页外部的时候，很可能会被外部的黑客利用，并且跳转到他们的网站，这样的话会给你的读者带来很多不安全的麻烦，所以我们限制了这个内容，只允许同域名的跳转。</p>
+<p>当然，如果你是在本地尝试预览你的博客，<code>hexo server</code> 这个命令默认的端口号 4000，你可以在这里填写：</p>
+<pre><code>localhost:4000
+</code></pre><p>这样本地测试链接回调的时候就会返回你本地的 localhost 了呢，但是要注意哦，当你部署到正式的域名下之后，要记得把回调链接改成你的博客域名地址，无论你的博客是否放在子域名或者子路径下，比如：xxx.com/blog 这才是你的博客的话，填写 xxx.com 也是没有问题的哦。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/25/W2vgCyaXA8MkpRl.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>点击立即创建就可以了哦，你会在 App 列表中看到你创建的 App。</p>
+<p>其他的内容在用户登录的时候也会展示出来，你可以前往 Oauth2 这个页面去查看你的 App Oauth 登录地址，可以看到在登录界面下，你填写的所有内容都是可以被用户查阅的。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/26/mBogLpwXsv4Va7y.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>这就是授权登录的界面。</p>
+<p>我们下一步要做什么呢？配置你的 Hexo。</p>
+<h2 id="配置-Oauth"><a href="#配置-Oauth" class="headerlink" title="配置 Oauth"></a>配置 Oauth</h2><p>在 Oauth2 页面下获取到的这个链接，要在 Hexo 的根目录或者主题目录下创建一个键值，键值名称叫 fanlocker，填写的内容就是你的 Oauth 地址，粘贴进去就好了。</p>
+<pre><code>fanlocker: https://developer.matataki.io/app/a0df0a921ffc94f3/oauth
+</code></pre><p>如果还是不清楚的话可以看这个链接：<a href="https://github.com/nekomeowww/hexo-plugin-matataki-example/blob/4622f004cafcd9edf452ff79cca8c774fe04dcb5/_config.yml#L112" target="_blank" rel="noopener">_config.yml:112</a></p>
+<p>主题页面下到这里就结束了。</p>
+<h2 id="安装-hexo-plugin-matataki"><a href="#安装-hexo-plugin-matataki" class="headerlink" title="安装 hexo-plugin-matataki"></a>安装 hexo-plugin-matataki</h2><p>我们现在在博客中添加我们的 hexo-plugin-matataki：</p>
+<pre><code>yarn add hexo-plugin-matataki@latest
+</code></pre><p>如果你没有安装 yarn 只有 npm 的话也没问题哦，国内速度会稍为慢一些：</p>
+<pre><code>npm install hexo-plugin-matataki@latest
+</code></pre><p>好啦，现在就大功告成了，Hexo 现在运行的时候就会去读取根目录下的 package.json 去加载这个插件。</p>
+<p>我们现在在文章的 md 文件中只需要在开头的位置填写下面的内容就好了，</p>
+<pre><code>matataki:
+  token: 填写你的 token id，这个 id 在你的 Fan 票详情页面地址栏里尾部的数字就是
+  password: 你的加密密码，随机字符串就好
+  name: 你的加密密码名称，要记住这个，我们之后还要用到
+  amount: 需要多少数量才可以解密呢？填写数字就好了
+  mode: hold 这里是模式，填写 hold 就好，将来会有支付的选项，可以填写 pay，但是现在还不行，我们写 hold 就好了
+</code></pre><p>这里也有一些额外的参数可以选择和使用，比如</p>
+<pre><code>matataki:
+ abstract: 这篇文章使用了 Fan 票加密，持有特定 Fan 票来解锁文章
+ message: 持有 Fan 票来解锁文章
+ wrongPassMessage: 解锁失败了呢。如果你是博客作者遇到这个问题，看看保险箱的键值对是否设置正确呢
+ wrongHashMessage: 好像文章加密的时候的时候遗漏了几页呢，不过这些剩下的内容还是可以看看啦
+</code></pre><p>这些参数分别作用在：</p>
+<ol>
+<li>abstract：文章外部，文章列表的地方会读取到的内容</li>
+<li>message：这个是文章内部的提示</li>
+<li>wrongPassMessage：这是加密密码正确的提示，通常是因为配置 name 错误导致的</li>
+<li>wrongHashMessage：这是加密全文丢失了部分内容导致的，通常是因为原文渲染不正确</li>
+</ol>
+<p>还有一个额外参数，比如你希望不同的页面使用不同的 Oauth 地址，也可以在这里声明：</p>
+<pre><code>matataki:
+    oauth: 你的 Oauth 地址
+</code></pre><p>那么我们最后的文章编辑器可以看到这样的结果：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/26/TcqiCjzVtmL1p7B.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>只要把这个内容放在 — 开头和 — 结尾的地方就好了呢。</p>
+<p>现在我们要去魔改我们的主题，让我们的主题能够进行解锁。</p>
+<p>如果你的文章内容涉及到了一些比如：ToC（目录，大纲），或者阅读时间，字数统计的话，你需要在字数统计的地方使用的</p>
+<pre><code>page.content
+</code></pre><p>更换为</p>
+<pre><code>page.origin
+</code></pre><p>就好了，这个地方使用的 origin 就是你的原文内容，如果你需要更多可以变更的选项，大都依赖这个值。</p>
+<p>如果还有其他问题，请前往：<a href="https://github.com/nekomeowww/hexo-plugin-matataki/issues" target="_blank" rel="noopener">https://github.com/nekomeowww/hexo-plugin-matataki/issues</a> 提交你的问题和相应的原因。</p>
+<h2 id="添加-FanLocker-脚本"><a href="#添加-FanLocker-脚本" class="headerlink" title="添加 FanLocker 脚本"></a>添加 FanLocker 脚本</h2><p>我们以 landscape 这个默认的主题来进行演示，如何进行修改。</p>
+<p>我们定位到这个文件：</p>
+<pre><code>themes/landscape/layout/post.ejs
+</code></pre><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/26/pdH2PC3oSlecAOM.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>通常点进去你只会发现一行代码的内容，这个文件在渲染的过程中完成了你的文章独立页面的渲染，我们要在你的每一个文章页面渲染下都添加这个小代码：</p>
+<pre><code>&lt;script src=&quot;https://unpkg.com/fanlocker@latest/dist/fanlocker.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  let fl = new FanLocker({
+    clientId: &#39;&lt;%- config.matataki.clientId %&gt;&#39;,
+    clientSecret: &#39;&lt;%- config.matataki.clientSecret %&gt;&#39;
+  })
+&lt;/script&gt;
+</code></pre><p>这段代码要求浏览器去加载最新版本的 FanLocker 脚本，这是需要联网才能获取的，在这点上我表示很抱歉我们不能做成本地存储的，当然你也可以把源代码下载下来，放置到你的 js 目录中使用本地加载：<a href="https://github.com/nekomeowww/fanlocker/tree/master/dist" target="_blank" rel="noopener">FanLocker 静态文件</a></p>
+<p>在上面这段代码中，我们还引入了两个参数：</p>
+<pre><code>config.matataki.clientId
+</code></pre><p>和</p>
+<pre><code>config.matataki.clientSecret
+</code></pre><p>这两个参数我们可以到根目录配置文件的位置填上：<a href="https://github.com/nekomeowww/hexo-plugin-matataki-example/blob/4622f004cafcd9edf452ff79cca8c774fe04dcb5/_config.yml#L113" target="_blank" rel="noopener">_config.yml:113</a></p>
+<pre><code>matataki:
+  clientId: 你在开发者中心获取的 Client ID
+  clientSecret: 你在开发者中心获取的 ClientSecret
+</code></pre><p>这两个参数我们要前往 App 的基本信息页面去获取：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/25/TFGgx13rOV5EdzI.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>点击复制就可以了，然后对应着粘贴到你的根目录配置文件内。</p>
+<p>这一步到这里就结束了，但是还有最后一步，我们需要一个安全的地方来存储我们的密码。</p>
+<h2 id="设置密码键值对"><a href="#设置密码键值对" class="headerlink" title="设置密码键值对"></a>设置密码键值对</h2><p>再次前往开发者中心，我们去保险箱这个页面创建我们的密码和内容，点击右上角的「创建键值对」就可以创建了。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/25/9vwtiMkgTrAG17U.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>我们把我们之前在文件中填写的 name 参数和密码参数填写进来，名字和密码都不能错哦，不能有多余的字符，要不然之后就获取不到了。</p>
+<p>点击立即创建就可以创建一个键值对。</p>
+<p>在这里猫猫需要声明一下呢，如果你在文章页面不进行声明 name 的话，会默认使用你的文件名，也就是 Markdown 的文件名作为 name 参数进行获取，我们如果想要方便的管理密码和密码的对应名字，应该是设定一个固定的密码，这样可以重复使用的，当然，如果你在保险箱中心不创建任何东西，你的文章在加密的时候也不会和服务器进行任何连接和数据传输，所以就算你不想去指定一个 name，你也需要自己手动来完成这个创建的过程，因为这才是安全的办法。</p>
+<p>创建之后就会返回保险箱主页，你可以看到你创建的键值对的名称，但是获取不到信息，在这里我们学习了 GitHub Secrets 的设计，我们不会在这里获取任何密钥信息，服务器只会返回你有的键值名称，如果你需要变更你的密码，点击更新就可以了。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/25/YpvmAQjPTlL5a7c.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>到这里就一切就绪了。</p>
+<h2 id="要注意的内容"><a href="#要注意的内容" class="headerlink" title="要注意的内容"></a>要注意的内容</h2><p>这里猫猫在开发的过程中遇到了一点小问题，Hexo 会使用本地 db.json 文件进行存储和临时数据的管理，如果你发现你的页面没有更新，那么你应该删除本地的 db.json 文件，如果之前有运行过 <code>hexo g</code> 这个命令，那你也应该优先运行 <code>hexo clean</code> 来清除之前的生成。</p>
+<p>如果本地没有 db.json 文件，也没有 public 文件夹，那么我们就可以运行这个命令来看到我们的内容了：</p>
+<pre><code>hexo s --debug
+</code></pre><p>如果你在加密的参数中更新了什么信息的话，建议再次删除 db.json 再去运行上面的命令。</p>
+<h2 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h2><p>如果你准备好了发布你的博客，运行</p>
+<pre><code>hexo d
+</code></pre><p>就好了</p>
+<h1 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h1><h2 id="怎么做呢？"><a href="#怎么做呢？" class="headerlink" title="怎么做呢？"></a>怎么做呢？</h2><p>其实在开发初期岛给我这个方向之后，我一开始思考的是怎么去做一个使用地址栏作为 query 的动态验证机制，因为在开始这两个项目之前我在开发的主要方向是 Matataki 的开发者中心：<a href="https://github.com/nekomeowww/DeveloperPortal-FE" target="_blank" rel="noopener">DeveloperPortal-FE</a>/<a href="https://github.com/nekomeowww/DeveloperPortal-BE" target="_blank" rel="noopener">BE</a>， 做的很多事情也是完成一个 Matataki 的第三方登录的机制，也就是众所周知的 Oauth2 授权，整个开发过程可以说是从基础模块去构建，去一步一步实现一整套完整的系统，到现在我们的 FanLocker 也就是完全基于开发者中心和 Matataki API 完成的所有工作。那么我是怎么解决这个问题的呢？</p>
+<h2 id="评论模块的启发"><a href="#评论模块的启发" class="headerlink" title="评论模块的启发"></a>评论模块的启发</h2><p>Hexo 用户可能很熟悉怎么去折腾评论模块，而我之前有接触过的两个评论模块都是使用了第三方登录，或者说使用了 Oauth（Gitalk）或者跳转登录（Disqus）的方式去完成，那么我想，如果要让开发者中心的 API 返回一个夹带着授权 token 的链接并且跳转到指定的地点，就需要一个 Window 相关的方法来动态检测和完成。我一步一步去 debug 和 trace back 了 disqus，gitalk，utterance 的登录方式，最后得出的结论是这样的：</p>
+<ol>
+<li>Disqus 的实现可能会慢一些，但是效果最好</li>
+<li>Gitalk 就是使用了 window 相关的 API 接口完成的（达成了我想要的结果）</li>
+<li>utterance 是后来认识的，debug 起来很简单，也是依赖 GitHub API Oauth 的结果</li>
+</ol>
+<p>那么综上所述，我选择了去阅读 Gitalk 的源码，去一步一步了解过程的发生和结束，认证的开始和许可</p>
+<h2 id="Gitalk-怎么完成的？"><a href="#Gitalk-怎么完成的？" class="headerlink" title="Gitalk 怎么完成的？"></a>Gitalk 怎么完成的？</h2><pre><code>const queryParse = (search = window.location.search) =&gt; {
+    if (!search) return {}
+    const queryString = search[0] === &#39;?&#39; ? search.substring(1) : search
+    const query = {}
+    queryString
+        .split(&#39;&amp;&#39;)
+        .forEach(queryStr =&gt; {
+            const [key, value] = queryStr.split(&#39;=&#39;)
+            if (key) query[decodeURIComponent(key)] = decodeURIComponent(value)
+        })
+    return query
+}
+</code></pre><p>在这里我把源码贴出来，也就是 window.location.search 这个关键的变量在起作用，当你的地址栏中有，存在 ? 这个 query string 的时候，就会把这个部分和后面的所有字符串当作是一个 search 变量，我们使用这个封装好的方法就可以得到一个地址栏 parser 的函数。</p>
+<h2 id="我们怎么用？"><a href="#我们怎么用？" class="headerlink" title="我们怎么用？"></a>我们怎么用？</h2><p>当我们开发者中心返回了 &amp;token=xxx 之后，我们在地址栏的尾部增加一个句段</p>
+<pre><code>?callback=true
+</code></pre><p>当然我们还要发给 Oauth 服务器一个 redirect_uri 的请求，这样才能正常的返回我们的指定的文章页面，而不是死板的博客首页，基于这样的需求，我又去开发者中心后端添加了这个接口，能够动态变更和控制 redirect_uri。</p>
+<p>于是我们先完成下面的请求：</p>
+<pre><code>axios.post(`https://developer.matataki.io/api/app/oauth`, { clientId: clientId, clientSecret: clientSecret, redirect_uri: `${window.location.origin}${window.location.pathname}?callback=true` })
+</code></pre><p>这里的 window.location.origin 和 window.location.pathname 就是我们的博客页面和博客附属地址，以及我们需要的字段，这样服务器就会知道，在下一次即将完成的 Oauth 授权中，需要跳转到这个指定的位置。</p>
+<p>当我们点击按钮，绑定的 click 事件就会触发这个解密的函数，去获取指定的密码来解锁文章。</p>
+<p>每次进入文章独立的页面的时候就会加载这个脚本并且检查是否有可以获取的信息，当用户点击登录并且授权之后，返回 token 就可以被获取和加载了。这一部分的内容可以查阅开发者中心的<a href="https://developer.matataki.io/doc/userprofile" target="_blank" rel="noopener">用户信息获取</a>的文档。</p>
+<h2 id="开发成两个分离的模块"><a href="#开发成两个分离的模块" class="headerlink" title="开发成两个分离的模块"></a>开发成两个分离的模块</h2><p>为什么是两个独立的项目呢，虽然加密解密的过程是需要同步和一致的，但是我们使用了外部第三方 API（也就是开发者中心提供的保险箱 API）来完成这个解密的过程，也是因为我借鉴的主要项目是 Gitalk，我认为两者运行的代码应该是可分离可拆解的，所以变成了两个项目，</p>
+<p>我们使用 hexo-plugin-matataki 在本地进行加密和生成，我们到了线上之后，使用 FanLocker 脚本进行动态的信息获取和解密文本。</p>
+<p>hexo-plugin-matataki 在本地按照用户的策略来加密和生成文章的加密后内容和信息，以及所有的信息存储方式按照模版注入进去，然后我们在本地添加一个动态加载 FanLocker 的脚本作为每个文章页面的详情页面的解锁方案。</p>
+<p>FanLocker 在运行的时候还会获取用户的钱包信息和用户 id 等等的基础内容，在获取之后我们进行比对，获取我们需要的 Fan 票 Id 来进行第一步校验，查看用户是否拥有这个指定的 Fan 票和指定数量的 Fan 票，如果有的话，我们进行第二步内容，我们使用提供的 client Id 和 client secret 来获取用户指定的密码，获取保险箱内容，最后使用获取的保险箱内容进行解密。</p>
+<p>到这里就完成了我们所有的内容整合，集成和运行。</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>谢谢你阅读到这里，也感谢你选择和使用 Matataki 和开发者中心，以及我们提供的 hexo-plugin-matataki 提供的站外解锁的方案。</p>
+<p>再一次我们不得不感谢以下几个项目给我的灵感和源代码支持：</p>
+<ol>
+<li>Gitalk: <a href="https://github.com/gitalk/gitalk" target="_blank" rel="noopener">https://github.com/gitalk/gitalk</a></li>
+<li>Disqus: <a href="https://disqus.com/" target="_blank" rel="noopener">https://disqus.com/</a></li>
+<li>hexo-blog-encrypt: <a href="https://github.com/MikeCoder/hexo-blog-encrypt" target="_blank" rel="noopener">https://github.com/MikeCoder/hexo-blog-encrypt</a></li>
+<li>Hexo: <a href="https://hexo.io/" target="_blank" rel="noopener">https://hexo.io/</a></li>
+<li>utterances: <a href="https://github.com/utterance/utterances" target="_blank" rel="noopener">https://github.com/utterance/utterances</a></li>
+</ol>
+<p>谢谢他们给我的源代码和灵感的实现。</p>
+<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p>预览 hexo-plugin-matataki 的样式：<a href="https://neko.ayaka.moe/hexo-plugin-matataki-showcase/">https://neko.ayaka.moe/hexo-plugin-matataki-showcase/</a><br>搭建博客的参考配置：<a href="https://github.com/nekomeowww/hexo-plugin-matataki-example" target="_blank" rel="noopener">https://github.com/nekomeowww/hexo-plugin-matataki-example</a><br>hexo-plugin-matataki 源码：<a href="https://github.com/nekomeowww/hexo-plugin-matataki" target="_blank" rel="noopener">https://github.com/nekomeowww/hexo-plugin-matataki</a><br>FanLocker 源码：<a href="https://github.com/nekomeowww/fanlocker" target="_blank" rel="noopener">https://github.com/nekomeowww/fanlocker</a><br>Matataki 开发者中心：<a href="https://developer.matataki.io" target="_blank" rel="noopener">https://developer.matataki.io</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-08-25T06:05:03.000Z" itemprop="dateUpdated">2020-08-25 14:05:03</time>
+</span><br>
+
+
+        
+        永久链接：<a href="/2020/08/25/042/" target="_blank" rel="external">https://neko.ayaka.moe/2020/08/25/042/</a><br>你相信命运是可以被改变的吗？
+        
+    </div>
+    
+    <footer>
+        <a href="https://neko.ayaka.moe">
+            <img src="/img/avatar.jpg" alt="Ayaka Neko">
+            Ayaka Neko
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fan%E7%A5%A8/" rel="tag">Fan票</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub-Blog/" rel="tag">GitHub Blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Matataki/" rel="tag">Matataki</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%87%E5%8D%97/" rel="tag">指南</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://neko.ayaka.moe/2020/08/25/042/&title=《Hexo 和 hexo-plugin-matataki 的使用和开发后记》 — 喵&pic=https://neko.ayaka.moe/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://neko.ayaka.moe/2020/08/25/042/&title=《Hexo 和 hexo-plugin-matataki 的使用和开发后记》 — 喵&source=前言有幸在加入仙女座星系之后能够给大家开发这么一个好用的站外工具和插件，当然这也少不了很多人的帮助和支持。
+最先要提到的肯定是 hexo-blog-enc..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://neko.ayaka.moe/2020/08/25/042/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo 和 hexo-plugin-matataki 的使用和开发后记》 — 喵&url=https://neko.ayaka.moe/2020/08/25/042/&via=https://neko.ayaka.moe" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/08/28/043/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> 前一页</div>
+        <h4 class="title">在基于 Three.js 的 3D 地球上放置图片</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/08/25/041/" id="post-next" class="post-nav-link">
+        <div class="tips">后一页 <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">试试看解锁这篇文章吧！</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'fanff0324';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+<script src="https://unpkg.com/fanlocker/dist/fanlocker.js"></script>
+<script>
+  let fl = new FanLocker({
+    clientId: '082228580745414',
+    clientSecret: '81214de3ddbd2bac'
+  })
+</script>
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <br>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>全站共有 53.2k 字</span>
+            <span>Ayaka Neko &copy; 2013 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://neko.ayaka.moe/2020/08/25/042/&title=《Hexo 和 hexo-plugin-matataki 的使用和开发后记》 — 喵&pic=https://neko.ayaka.moe/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://neko.ayaka.moe/2020/08/25/042/&title=《Hexo 和 hexo-plugin-matataki 的使用和开发后记》 — 喵&source=前言有幸在加入仙女座星系之后能够给大家开发这么一个好用的站外工具和插件，当然这也少不了很多人的帮助和支持。
+最先要提到的肯定是 hexo-blog-enc..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://neko.ayaka.moe/2020/08/25/042/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo 和 hexo-plugin-matataki 的使用和开发后记》 — 喵&url=https://neko.ayaka.moe/2020/08/25/042/&via=https://neko.ayaka.moe" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://neko.ayaka.moe/2020/08/25/042/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '在这里等你回来哦';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎回来呢！';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

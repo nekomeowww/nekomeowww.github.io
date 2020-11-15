@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Mapbox 和那些坑 | 喵 | 欢迎光临喵~</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#EC4E6F">
+    
+    
+    <meta name="keywords" content="Vue,CryptoMeetup,Mapbox,mapbox-gl">
+    <meta name="description" content="前言这篇文章是我在接手 Crypto Meetup 这个项目之后在使用 Mapbox-gl 的时候遇到的一些问题的总结，以及相应的解决办法。因为国内关于 Mapbox-gl 的资料很少很少，所以查阅的时候大部分都是英文资料，我想，希望能够写下这篇文章，来帮助国内的一些开发者，能让你们也受众，这里也会给出一些很少人，很少论坛会引用到的，我查找到的一些资源，希望能够帮助到大家。 Crypto Meet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mapbox 和那些坑">
+<meta property="og:url" content="https://neko.ayaka.moe/2020/06/30/040/index.html">
+<meta property="og:site_name" content="喵">
+<meta property="og:description" content="前言这篇文章是我在接手 Crypto Meetup 这个项目之后在使用 Mapbox-gl 的时候遇到的一些问题的总结，以及相应的解决办法。因为国内关于 Mapbox-gl 的资料很少很少，所以查阅的时候大部分都是英文资料，我想，希望能够写下这篇文章，来帮助国内的一些开发者，能让你们也受众，这里也会给出一些很少人，很少论坛会引用到的，我查找到的一些资源，希望能够帮助到大家。 Crypto Meet">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/08/16/gkjDYbq4mNGT5Fo.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/31/py3iN7bmXKatZ2O.png">
+<meta property="article:published_time" content="2020-06-30T12:11:44.000Z">
+<meta property="article:modified_time" content="2020-06-30T12:11:44.000Z">
+<meta property="article:author" content="Ayaka Neko">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="CryptoMeetup">
+<meta property="article:tag" content="Mapbox">
+<meta property="article:tag" content="mapbox-gl">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/08/16/gkjDYbq4mNGT5Fo.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="喵" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.jpg">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.png)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Ayaka Neko</h5>
+          <a href="mailto:neko@ayaka.moe" title="neko@ayaka.moe" class="mail">neko@ayaka.moe</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                好多标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                各个分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-heart"></i>
+                关于猫猫
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="mailto:neko@ayaka.moe"  >
+                <i class="icon icon-lg icon-envelope-open"></i>
+                Email 地址
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/nekomeowww" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/ayakaneko" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://steamcommunity.com/id/ayakaneko" target="_blank" >
+                <i class="icon icon-lg icon-steam"></i>
+                Steam
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Mapbox 和那些坑</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Mapbox 和那些坑</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-06-30T12:11:44.000Z" itemprop="datePublished" class="page-time">
+  2020-06-30
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Guide/">Guide</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#实现功能，问题本身"><span class="post-toc-number">2.</span> <span class="post-toc-text">实现功能，问题本身</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码分析"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">代码分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#加载-Geojson"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">加载 Geojson</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加图层-Layer"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">添加图层 Layer</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#绑定鼠标事件并且添加动态变量"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">绑定鼠标事件并且添加动态变量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#问题在哪里？"><span class="post-toc-number">2.1.4.</span> <span class="post-toc-text">问题在哪里？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解决问题"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">解决问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#添加用户头像到地图上"><span class="post-toc-number">3.</span> <span class="post-toc-text">添加用户头像到地图上</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#最后"><span class="post-toc-number">4.</span> <span class="post-toc-text">最后</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#引用，参考，和相关资源"><span class="post-toc-number">5.</span> <span class="post-toc-text">引用，参考，和相关资源</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Vue-Mapbox-GL"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">Vue-Mapbox-GL</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#介绍和使用-Geojson-相关的资料"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">介绍和使用 Geojson 相关的资料</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下载和使用开放的-Geojson-的网站"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">下载和使用开放的 Geojson 的网站</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Geojson-和-Mbtiles-绘制的软件和项目"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">Geojson 和 Mbtiles 绘制的软件和项目</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#各个国家和世界地图的-Geojson-文件（GitHub）"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">各个国家和世界地图的 Geojson 文件（GitHub）</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-040"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Mapbox 和那些坑</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-06-30 20:11:44" datetime="2020-06-30T12:11:44.000Z"  itemprop="datePublished">2020-06-30</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Guide/">Guide</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            <br>
+            <br>
+            共有字数 3.7k 字 | 阅读时间 16 分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这篇文章是我在接手 Crypto Meetup 这个项目之后在使用 Mapbox-gl 的时候遇到的一些问题的总结，以及相应的解决办法。因为国内关于 Mapbox-gl 的资料很少很少，所以查阅的时候大部分都是英文资料，我想，希望能够写下这篇文章，来帮助国内的一些开发者，能让你们也受众，这里也会给出一些很少人，很少论坛会引用到的，我查找到的一些资源，希望能够帮助到大家。</p>
+<p><a href="https://cryptomeetup.async.moe" target="_blank" rel="noopener">Crypto Meetup</a> 是我在入职仙女座星系之后接手的第一个 Dapp 项目，目的是让用户之间可以共享地理位置，可以在持有特定 Fan 票的情况下，解锁他人的地理位置分享。虽然说叫 Dapp，但其实最终产品在写就的时候就没有太多关于区块链和去中心化的技术，使用的依然是 Vue 前端 + Koa2 后端这样的一个模式来完成的开发，最终部署到你们看到的网站的时候，也是依赖于中心化服务器提供的数据，所以说不算是一个严谨的 Dapp 吧，但是作为 Matataki 的一个小应用，还是蛮不错的，我在其中也学到了 Vue 项目的基本结构和如何构建的知识。<br><a id="more"></a></p>
+<h1 id="实现功能，问题本身"><a href="#实现功能，问题本身" class="headerlink" title="实现功能，问题本身"></a>实现功能，问题本身</h1><p>其实要实现的内容很简单，在 <a href="https://cryptomeetup.async.moe/globe" target="_blank" rel="noopener">Crypto Meetup</a> 可以看到，地球模式下，鼠标滑过国家地区的时候，会有高亮边缘的一个动画特效，我希望这个功能也能够在地图模式下实现。因为使用的是 Mapbox-gl-js，自然文档就要去 Mapbox 官网去找：<a href="https://docs.mapbox.com/mapbox-gl-js/api/" target="_blank" rel="noopener">https://docs.mapbox.com/mapbox-gl-js/api/</a> ，在这里就能看到所有的文档，这个页面还有一个中文版，但是为了保证原生的文档内容，我们在这里就使用英文文档提供的资料就好。</p>
+<p>我查阅了文档本身提供的 Examples（用例），找到了这个 <a href="https://docs.mapbox.com/mapbox-gl-js/example/hover-styles/" target="_blank" rel="noopener">Create a hover effect（创建一个鼠标划过的特效）</a>：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/16/gkjDYbq4mNGT5Fo.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>也就是我想要的鼠标滑动相关的内容，这个实现呢，就是一个<strong>鼠标滑动经过这些地图的区块的时候，我们鼠标下方的区块可以发生我们所设定的图像样式的变化</strong>，这个也就是我在接手这个项目的时候 3D 地球里面使用的鼠标滑动高亮的类似实现。看到这个文档的时候我就想，就是这个了。我们可以看看大致的文档内容是如何描述的。</p>
+<p>这里是代码：</p>
+<pre><code class="javascript">var hoveredStateId = null;
+
+map.on(&#39;load&#39;, function() {
+    map.addSource(&#39;states&#39;, {
+      &#39;type&#39;: &#39;geojson&#39;,
+      &#39;data&#39;:
+      &#39;https://docs.mapbox.com/mapbox-gl-js/assets/us_states.geojson&#39;
+      });
+
+    // The feature-state dependent fill-opacity expression will render the hover effect
+    // when a feature&#39;s hover state is set to true.
+    map.addLayer({
+      &#39;id&#39;: &#39;state-fills&#39;,
+      &#39;type&#39;: &#39;fill&#39;,
+      &#39;source&#39;: &#39;states&#39;,
+      &#39;layout&#39;: {},
+      &#39;paint&#39;: {
+        &#39;fill-color&#39;: &#39;#627BC1&#39;,
+        &#39;fill-opacity&#39;: [
+          &#39;case&#39;,
+          [&#39;boolean&#39;, [&#39;feature-state&#39;, &#39;hover&#39;], false],
+          1,
+          0.5
+        ]
+      }
+    });
+
+    map.addLayer({
+      &#39;id&#39;: &#39;state-borders&#39;,
+      &#39;type&#39;: &#39;line&#39;,
+      &#39;source&#39;: &#39;states&#39;,
+      &#39;layout&#39;: {},
+      &#39;paint&#39;: {
+        &#39;line-color&#39;: &#39;#627BC1&#39;,
+        &#39;line-width&#39;: 2
+      }
+    });
+
+    // When the user moves their mouse over the state-fill layer, we&#39;ll update the
+    // feature state for the feature under the mouse.
+    map.on(&#39;mousemove&#39;, &#39;state-fills&#39;, function(e) {
+      if (e.features.length &gt; 0) {
+        if (hoveredStateId) {
+          map.setFeatureState(
+          { source: &#39;states&#39;, id: hoveredStateId },
+          { hover: false }
+          );
+        }
+        hoveredStateId = e.features[0].id;
+        map.setFeatureState(
+          { source: &#39;states&#39;, id: hoveredStateId },
+          { hover: true }
+        );
+      }
+    });
+
+    // When the mouse leaves the state-fill layer, update the feature state of the
+    // previously hovered feature.
+    map.on(&#39;mouseleave&#39;, &#39;state-fills&#39;, function() {
+      if (hoveredStateId) {
+        map.setFeatureState(
+          { source: &#39;states&#39;, id: hoveredStateId },
+          { hover: false }
+        );
+      }
+      hoveredStateId = null;
+    });
+});
+</code></pre>
+<p>官方给出来的代码原本还有一些是用来初始化地图和 mapbox-gl-js 这个 JavaScript Library 的，这一部分我会在另一篇文章来介绍是怎么样使用 Vue + Webpack + Mapbox-GL 来加载地图（这个方案可以代替百度地图或者是高德地图的 API），这些代码我就省略了，因为在 Vue 的实际使用中有不同的方案和方法。</p>
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><p>我们来看官方给出的参考代码是怎么描述的，这段代码分成三个部分来描述。</p>
+<p>首先是第一点，我们要加载 Geojson 的资源进来。</p>
+<h3 id="加载-Geojson"><a href="#加载-Geojson" class="headerlink" title="加载 Geojson"></a>加载 Geojson</h3><pre><code>map.addSource(&#39;states&#39;, {
+  &#39;type&#39;: &#39;geojson&#39;,
+  &#39;data&#39;:
+  &#39;https://docs.mapbox.com/mapbox-gl-js/assets/us_states.geojson&#39;
+});
+</code></pre><p>这个地方使用的 Geojson 资源是 Mapbox 官方文档给的一个演示用 Geojson 文件。这里我们使用 map 对象的 addSource 方法加载了一个类型为 geojson 的数据，data 就是我们的 url （这里给出 URL 说明这个是一个可以自动生成一个 XMLHttpRequest 的，关于 XMLHttpRequest 的知识我们可以看：<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest" target="_blank" rel="noopener">XMLHttpRequest - MDN</a>）我们先略过这个部分，因为重要的实现不在这个地方。</p>
+<h3 id="添加图层-Layer"><a href="#添加图层-Layer" class="headerlink" title="添加图层 Layer"></a>添加图层 Layer</h3><pre><code>map.addLayer({
+  &#39;id&#39;: &#39;state-fills&#39;,
+  &#39;type&#39;: &#39;fill&#39;,
+  &#39;source&#39;: &#39;states&#39;,
+  &#39;layout&#39;: {},
+  &#39;paint&#39;: {
+    &#39;fill-color&#39;: &#39;#627BC1&#39;,
+    &#39;fill-opacity&#39;: [
+      &#39;case&#39;,
+      [&#39;boolean&#39;, [&#39;feature-state&#39;, &#39;hover&#39;], false],
+      1,
+      0.5
+    ]
+  }
+});
+
+map.addLayer({
+  &#39;id&#39;: &#39;state-borders&#39;,
+  &#39;type&#39;: &#39;line&#39;,
+  &#39;source&#39;: &#39;states&#39;,
+  &#39;layout&#39;: {},
+  &#39;paint&#39;: {
+    &#39;line-color&#39;: &#39;#627BC1&#39;,
+    &#39;line-width&#39;: 2
+  }
+});
+</code></pre><p>在这里我们可以看到我们使用之前加载进来的 source：<strong>states</strong> 来标记我们为哪一个资源添加图层，这里是 states。我们在这里添加了两个图层，一个是填充（state-fills），一个是边缘（state-borders），他们的类型分别是 <strong>fill</strong> 和 <strong>line</strong> ，在 paint 对象里面还定义了填充的方式，以及 Mapbox 特有的对象编辑表达式：<a href="https://www.mapbox.cn/mapbox-gl-js/style-spec/#expressions" target="_blank" rel="noopener">https://www.mapbox.cn/mapbox-gl-js/style-spec/#expressions</a></p>
+<p>要了解这一点很重要，我一开始在开发的过程中看文档没有很清楚的描述表达式，在开发的过程中对这个 <code>fill-opacity</code> 对象就很疑惑，我们到底是怎么表达的。在这里我进行解释：</p>
+<p>我们先把这个格式化好的代码变成一行：</p>
+<pre><code>&#39;fill-opacity&#39;: [&#39;case&#39;, [&#39;boolean&#39;, [&#39;feature-state&#39;, &#39;hover&#39;], false], 1, 0.5 ]
+</code></pre><p>这样方便我们去理解。</p>
+<p>首先是第一个参数，<strong>case</strong>，在文档中被描述为：<strong>expression_name</strong>，表达式名称，也就是这个表达式运行的方式，是基于给定 case（状态）来判定后续代码的，接下来是第二个参数，是一个数组，这个数组又是另一个表达式，描述了 <strong>boolean</strong> 类型的工作方式（这部分可以参考 <a href="https://www.mapbox.cn/mapbox-gl-js/style-spec/#expression-reference" target="_blank" rel="noopener">Expression Reference - Mapbox-GL</a> ），我们可以看到这里定义了 <code>feature-state</code> 基于 <code>hover</code> 来变化，初始化值为 <code>false</code>，继续往下看，我们看到，<strong>当 boolean 返回 false 或者 true 的时候，就会运行后面的两个参数，并且赋值给 <code>fill-opacity</code></strong>。</p>
+<p>这个就是表达式的基本解读，这点十分十分十分重要，在其他 Mapbox 的实现的时候能够使用表达式做很多计算和预处理和数据解析，能够省去很多东西，还能借助 Geojson 的资源进行对应的计算来反映到实际的地图实例上。</p>
+<p>接下来就是最后一部分代码。</p>
+<h3 id="绑定鼠标事件并且添加动态变量"><a href="#绑定鼠标事件并且添加动态变量" class="headerlink" title="绑定鼠标事件并且添加动态变量"></a>绑定鼠标事件并且添加动态变量</h3><pre><code>map.on(&#39;mousemove&#39;, &#39;state-fills&#39;, function(e) {
+  if (e.features.length &gt; 0) {
+    if (hoveredStateId) {
+      map.setFeatureState(
+      { source: &#39;states&#39;, id: hoveredStateId },
+      { hover: false }
+      );
+    }
+    hoveredStateId = e.features[0].id;
+    map.setFeatureState(
+      { source: &#39;states&#39;, id: hoveredStateId },
+      { hover: true }
+    );
+  }
+});
+
+// When the mouse leaves the state-fill layer, update the feature state of the
+// previously hovered feature.
+map.on(&#39;mouseleave&#39;, &#39;state-fills&#39;, function() {
+  if (hoveredStateId) {
+    map.setFeatureState(
+      { source: &#39;states&#39;, id: hoveredStateId },
+      { hover: false }
+    );
+  }
+  hoveredStateId = null;
+});
+</code></pre><p>分两段来阅读，第一部分是添加鼠标的事件：<strong>mousemove</strong>，也就是在鼠标移动的时候会运行下面的代码，如果鼠标悬浮的位置下方有有效的 feature，那么就赋值 id 并且设置 hover 对象为 true。</p>
+<p>注意看代码的这个部分：</p>
+<pre><code>if (hoveredStateId) {
+  map.setFeatureState(
+  { source: &#39;states&#39;, id: hoveredStateId },
+  { hover: false }
+  );
+}
+hoveredStateId = e.features[0].id;
+map.setFeatureState(
+  { source: &#39;states&#39;, id: hoveredStateId },
+  { hover: true }
+);
+</code></pre><p>这里说明了，我们改动变化的时候，改动的资源是 <strong>states</strong>，并且会把 hover 这个对象复制为两个不同的结果，也就是 true 和 false。</p>
+<p>我们继续看下面的代码，</p>
+<p>第二部分是绑定鼠标事件：<strong>mouseleave</strong> ，也就是鼠标离开某个对象的时候会运行下面的代码，这个代码把高亮起来的对象设置 hover 对象为 false，这样在之前的表达式中描述的地图效果就会应用到地图对象上。</p>
+<h3 id="问题在哪里？"><a href="#问题在哪里？" class="headerlink" title="问题在哪里？"></a>问题在哪里？</h3><p>我们现在了解了代码的使用方法和 API 的相关用法。我们改动一下数值，我们先载入一个我们的 Geojson 对象，然后看看会不会有什么变化。</p>
+<p>这里我选用了：<a href="https://github.com/simonepri/geo-maps/blob/master/info/countries-coastline.md" target="_blank" rel="noopener">@geo-maps 海岸线</a> 的 npm 包：<a href="https://www.npmjs.com/package/@geo-maps/countries-coastline-1m" target="_blank" rel="noopener">https://www.npmjs.com/package/@geo-maps/countries-coastline-1m</a> 提供的 json</p>
+<p>我发现引入直接在 Vue 中引入这个 npm 包是无法正常解析的，于是我单独把文件拿出来，我们换个名字，叫：custom.geo.json</p>
+<p>const geoData = require(‘custom.geo.json’)</p>
+<p>接着继续引入。</p>
+<p>我打开浏览器查看变化，发现什么都没有标记出来，为什么会这样？我查阅了很多资料都没有提到这个问题和相应的解决办法，甚至没有人提到这样的问题。我去翻阅文档的时候看到了一个十分重要的描述：<a href="https://docs.mapbox.com/mapbox-gl-js/api/map/#map#getfeaturestate" target="_blank" rel="noopener">getFeatureState()</a> 这个方法的描述中有个很重要的解释：<strong>Features are identified by their <code>feature.id</code> attribute, which can be any number or string.</strong> 什么意思呢？就是说 <strong>Feature 是基于 <code>feature.id</code> 来定位的，这个值可以是一个数字或者是字符串</strong>，于是我看了看我的 custom.geo.json，他们并没有在这个里面标注 id 这个对象，我打开了 Mapbox 提供的那个 states.json 文件，看到了 id 的定义，还有一个 state_id，但是那个并不重要。</p>
+<p>也就是说我们的 Mapbox 即便读取到了 Geojson 的数据，但是也不能基于 feature.id 给出特定的指向。我换了几个 Geojson 的资源，发现都是犯了同样的错误所以我不能很好的去设置 feature-state 的状态。</p>
+<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><p>无奈之下，我写了一个小小的脚本来完成这个任务：</p>
+<pre><code>const fs = require(&#39;fs&#39;)
+let geoData = require(&quot;./custom.geo.json&quot;)
+console.log(geoData.features.length)
+for(let i = 0; i &lt; geoData.features.length; i++) {
+    Object.defineProperty(geoData.features[i], &quot;id&quot;, {
+         value: i,
+         writable: true,
+         enumerable: true
+    })
+}
+geoData.features.forEach(e =&gt; console.log(&quot;1: &quot;, e.id))
+geoData.features.forEach(e =&gt; console.log(e.hasOwnProperty(&quot;id&quot;)))
+console.log(geoData.features[0])
+
+fs.writeFileSync(&quot;./customgeo.json&quot;, JSON.stringify(geoData))
+
+let geoDataEdited = require(&quot;./customgeo.json&quot;)
+geoDataEdited.features.forEach(e =&gt; console.log(e))
+</code></pre><p>我们用原始的 Node 就可以跑起来，这里的 custom.geo.json 就是你的国家资源，也可以是省份区划，但是一定是 Geojson 结构的，我们在这里给每一个 feature 添加一个 id，并且赋值上去。</p>
+<p>现在我们使用新的这个 customgeo.json 引入之后发现，可以使用了！</p>
+<p>原因就是在于 <code>feature.id</code> 没有被定义就无法被 Mapbox 识别和标记。</p>
+<p>因为我还需要高亮国家边界线所以我把原来的代码也修缮了一下：</p>
+<pre><code>map.addSource(&#39;countries&#39;, {
+  type: &#39;geojson&#39;,
+  data: geoData
+});
+
+// The feature-state dependent fill-opacity expression will render the hover effect
+// when a feature&#39;s hover state is set to true.
+map.addLayer({
+  id: &#39;state-fills&#39;,
+  type: &#39;fill&#39;,
+  source: &#39;countries&#39;,
+  layout: {},
+  paint: {
+    &#39;fill-color&#39;: &#39;#000&#39;,
+    &#39;fill-opacity&#39;: [
+      &#39;case&#39;,
+      [&#39;boolean&#39;, [&#39;feature-state&#39;, &#39;hover&#39;], false],
+      0,
+      0
+    ]
+  }
+});
+
+map.addLayer({
+  id: &#39;state-borders&#39;,
+  type: &#39;line&#39;,
+  source: &#39;countries&#39;,
+  layout: {},
+  paint: {
+    &#39;line-color&#39;: &#39;#FFD83F&#39;,
+    &#39;line-width&#39;: 2,
+    &#39;line-opacity&#39;: [
+      &#39;case&#39;,
+      [&#39;boolean&#39;, [&#39;feature-state&#39;, &#39;hover&#39;], false],
+      0.5,
+      0
+    ]
+
+  }
+});
+
+// When the user moves their mouse over the state-fill layer, we&#39;ll update the
+// feature state for the feature under the mouse.
+let hoveredStateId = null;
+
+map.on(&#39;mousemove&#39;, &#39;state-fills&#39;, (e, i) =&gt; {
+  if (e.features.length &gt; 0) {
+    if (hoveredStateId) {
+      map.setFeatureState(
+        { source: &#39;countries&#39;, id: hoveredStateId },
+        { hover: false }
+      );
+    }
+    hoveredStateId = e.features[0].id;
+    map.setFeatureState(
+      { source: &#39;countries&#39;, id: hoveredStateId },
+      { hover: true }
+    );
+  }
+});
+
+map.on(&#39;mouseleave&#39;, &#39;state-fills&#39;, () =&gt; {
+  if (hoveredStateId) {
+    map.setFeatureState(
+      { source: &#39;countries&#39;, id: hoveredStateId },
+      { hover: false }
+    );
+  }
+  hoveredStateId = null;
+});
+</code></pre><h1 id="添加用户头像到地图上"><a href="#添加用户头像到地图上" class="headerlink" title="添加用户头像到地图上"></a>添加用户头像到地图上</h1><p>我原本以为这个功能是十分容易理解的：</p>
+<pre><code>map.addImage(avatar, image);
+map.addSource(&#39;user-avatar&#39;, {
+  type: &#39;geojson&#39;,
+  data: {
+    type: &#39;FeatureCollection&#39;,
+    features: [
+      {
+        type: &#39;Feature&#39;,
+        geometry: {
+          type: &#39;Point&#39;,
+          coordinates: position.data
+        }
+      }
+    ]
+  }
+});
+map.addLayer({
+  id: 0,
+  type: &#39;symbol&#39;,
+  source: &#39;user-avatar&#39;,
+  layout: {
+    &#39;icon-image&#39;: avatar,
+    &#39;icon-size&#39;: 0.08
+  }
+});
+</code></pre><ol>
+<li>我们创建一个新的 Geojson 对象，这个对象包含了一个 FeatureCollection</li>
+<li>Feature 是一个点，点对应的是一个坐标</li>
+<li>我们在这个对象里添加一个图层，这个图层是一个图标，是一个图像文件。</li>
+</ol>
+<p>可是我们需要做到的是显示多个用户的头像到这个地图上，我在开发的时候却怎么也做不到。<br>最后还是查阅文档发现了一个很重要的内容，<strong>我们添加的这个 source id 也是独立的，我们的 layer id 是独立的，我们的头像才可以多个显示出来</strong>，因为这样才有独立的 id 可以被 Mapbox 区分开来。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/31/py3iN7bmXKatZ2O.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>所以最后我们需要修改的部分就是添加图层的部分和添加 source 的时候的不同：</p>
+<pre><code>const itemId = &#39;id&#39; + element.userId
+const avatar = &#39;avatar&#39; + element.userId
+if (error) throw error;
+map.addImage(avatar, image);
+map.addSource(itemId, {
+  type: &#39;geojson&#39;,
+  data: {
+    type: &#39;FeatureCollection&#39;,
+    features: [
+      {
+        type: &#39;Feature&#39;,
+        geometry: {
+          type: &#39;Point&#39;,
+          coordinates: position.data
+        }
+      }
+    ]
+  }
+});
+map.addLayer({
+  id: itemId,
+  type: &#39;symbol&#39;,
+  source: itemId,
+  layout: {
+    &#39;icon-image&#39;: avatar,
+    &#39;icon-size&#39;: 0.08
+  }
+});
+</code></pre><p>我不得不创建两个独立的 id 来针对 source 和 图层 进行标记才行。</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>希望我的这篇文章能够给你提供帮助，因为国内外的资源都相当稀缺，很多弯路都是在这个不断的实验中得出的。希望我的这些代码分析和小脚本能够在你的项目当中给你提供足够的帮助。</p>
+<p>再一次，感谢你一路阅读到这里，谢谢你的支持。</p>
+<h1 id="引用，参考，和相关资源"><a href="#引用，参考，和相关资源" class="headerlink" title="引用，参考，和相关资源"></a>引用，参考，和相关资源</h1><h2 id="Vue-Mapbox-GL"><a href="#Vue-Mapbox-GL" class="headerlink" title="Vue-Mapbox-GL"></a>Vue-Mapbox-GL</h2><p><a href="https://github.com/phegman/vue-mapbox-gl" target="_blank" rel="noopener">https://github.com/phegman/vue-mapbox-gl</a></p>
+<h2 id="介绍和使用-Geojson-相关的资料"><a href="#介绍和使用-Geojson-相关的资料" class="headerlink" title="介绍和使用 Geojson 相关的资料"></a>介绍和使用 Geojson 相关的资料</h2><p><a href="http://blog.infographics.tw/2016/01/draw-map-with-geojson-io/" target="_blank" rel="noopener">http://blog.infographics.tw/2016/01/draw-map-with-geojson-io/</a><br><a href="http://geojson.io/#map=2/20.1/0.0" target="_blank" rel="noopener">http://geojson.io/#map=2/20.1/0.0</a><br><a href="https://www.mapbox.cn/mapbox-gl-js/example/hover-styles/" target="_blank" rel="noopener">https://www.mapbox.cn/mapbox-gl-js/example/hover-styles/</a><br><a href="https://geojson-maps.ash.ms/" target="_blank" rel="noopener">https://geojson-maps.ash.ms/</a><br><a href="https://datahub.io/core/geo-countries" target="_blank" rel="noopener">https://datahub.io/core/geo-countries</a></p>
+<h2 id="下载和使用开放的-Geojson-的网站"><a href="#下载和使用开放的-Geojson-的网站" class="headerlink" title="下载和使用开放的 Geojson 的网站"></a>下载和使用开放的 Geojson 的网站</h2><p><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">https://www.naturalearthdata.com/</a></p>
+<h2 id="Geojson-和-Mbtiles-绘制的软件和项目"><a href="#Geojson-和-Mbtiles-绘制的软件和项目" class="headerlink" title="Geojson 和 Mbtiles 绘制的软件和项目"></a>Geojson 和 Mbtiles 绘制的软件和项目</h2><p><a href="https://www.qgis.org/en/site/forusers/download.html" target="_blank" rel="noopener">https://www.qgis.org/en/site/forusers/download.html</a></p>
+<p><a href="https://gdal.org/index.html" target="_blank" rel="noopener">https://gdal.org/index.html</a></p>
+<h2 id="各个国家和世界地图的-Geojson-文件（GitHub）"><a href="#各个国家和世界地图的-Geojson-文件（GitHub）" class="headerlink" title="各个国家和世界地图的 Geojson 文件（GitHub）"></a>各个国家和世界地图的 Geojson 文件（GitHub）</h2><p><a href="https://github.com/mledoze/countries" target="_blank" rel="noopener">https://github.com/mledoze/countries</a><br><a href="https://github.com/johan/world.geo.json" target="_blank" rel="noopener">https://github.com/johan/world.geo.json</a><br><a href="https://github.com/simonepri/geo-maps" target="_blank" rel="noopener">https://github.com/simonepri/geo-maps</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-06-30T12:11:44.000Z" itemprop="dateUpdated">2020-06-30 20:11:44</time>
+</span><br>
+
+
+        
+        永久链接：<a href="/2020/06/30/040/" target="_blank" rel="external">https://neko.ayaka.moe/2020/06/30/040/</a><br>你相信命运是可以被改变的吗？
+        
+    </div>
+    
+    <footer>
+        <a href="https://neko.ayaka.moe">
+            <img src="/img/avatar.jpg" alt="Ayaka Neko">
+            Ayaka Neko
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CryptoMeetup/" rel="tag">CryptoMeetup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mapbox/" rel="tag">Mapbox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mapbox-gl/" rel="tag">mapbox-gl</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://neko.ayaka.moe/2020/06/30/040/&title=《Mapbox 和那些坑》 — 喵&pic=https://neko.ayaka.moe/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://neko.ayaka.moe/2020/06/30/040/&title=《Mapbox 和那些坑》 — 喵&source=前言这篇文章是我在接手 Crypto Meetup 这个项目之后在使用 Mapbox-gl 的时候遇到的一些问题的总结，以及相应的解决办法。因为国内关于 ..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://neko.ayaka.moe/2020/06/30/040/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Mapbox 和那些坑》 — 喵&url=https://neko.ayaka.moe/2020/06/30/040/&via=https://neko.ayaka.moe" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/08/25/041/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> 前一页</div>
+        <h4 class="title">试试看解锁这篇文章吧！</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/06/12/039/" id="post-next" class="post-nav-link">
+        <div class="tips">后一页 <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">新的这一切</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'fanff0324';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+<script src="https://unpkg.com/fanlocker/dist/fanlocker.js"></script>
+<script>
+  let fl = new FanLocker({
+    clientId: '082228580745414',
+    clientSecret: '81214de3ddbd2bac'
+  })
+</script>
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <br>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>全站共有 53.2k 字</span>
+            <span>Ayaka Neko &copy; 2013 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://neko.ayaka.moe/2020/06/30/040/&title=《Mapbox 和那些坑》 — 喵&pic=https://neko.ayaka.moe/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://neko.ayaka.moe/2020/06/30/040/&title=《Mapbox 和那些坑》 — 喵&source=前言这篇文章是我在接手 Crypto Meetup 这个项目之后在使用 Mapbox-gl 的时候遇到的一些问题的总结，以及相应的解决办法。因为国内关于 ..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://neko.ayaka.moe/2020/06/30/040/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Mapbox 和那些坑》 — 喵&url=https://neko.ayaka.moe/2020/06/30/040/&via=https://neko.ayaka.moe" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://neko.ayaka.moe/2020/06/30/040/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '在这里等你回来哦';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎回来呢！';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
