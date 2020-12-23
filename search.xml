@@ -4189,36 +4189,6 @@ $ Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
     </entry>
     
     <entry>
-      <title><![CDATA[睡莲]]></title>
-      <url>/2014/07/29/970/</url>
-      <content type="html"><![CDATA[<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://i.loli.net/2020/08/13/wyOZFYIcEpeuRl5.jpg" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>用LR调调色，原本拍的时候黯淡无光，现在超级棒。如果热度足够我会把它放到我的ART里。谢谢捧场~</p>
-]]></content>
-      
-        <categories>
-            
-            <category> LOFTER 迁移 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Canon EOS 600D </tag>
-            
-            <tag> 摄影 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[後會無期]]></title>
       <url>/2014/07/29/969/</url>
       <content type="html"><![CDATA[<p>昨天，又錯過一次與朋友們聚會玩耍的機會。</p>
@@ -4243,6 +4213,36 @@ $ Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
             <tag> 感想 </tag>
             
             <tag> 随笔 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[睡莲]]></title>
+      <url>/2014/07/29/970/</url>
+      <content type="html"><![CDATA[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/08/13/wyOZFYIcEpeuRl5.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>用LR调调色，原本拍的时候黯淡无光，现在超级棒。如果热度足够我会把它放到我的ART里。谢谢捧场~</p>
+]]></content>
+      
+        <categories>
+            
+            <category> LOFTER 迁移 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Canon EOS 600D </tag>
+            
+            <tag> 摄影 </tag>
             
         </tags>
         
